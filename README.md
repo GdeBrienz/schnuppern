@@ -40,7 +40,7 @@ Auf dem Proxmox-Server steht nun die Anweisung, dass du über den Webbrowser auf
 > **_INFO💡_**
 > Auf dem PC links von dir hast du nun Proxmox installiert und die Umgebung läuft nun auf dieser Maschine. Wir wollen nun von einem anderen Computer aus darauf zugreifen, konkret vom Laptop aus.
 > Dafür - notiere dir gleich die IP-Adresse und den Port der auf dem Proxmox-Interface steht.
-> Zum Beispiel wäre das "192.168.110.1:4008".
+> Zum Beispiel wäre das "172.18.68.38:4008".
 > Damit du den Bildschirm in der Mitte nun für den Laptop brauchen kannst, konsultiere mich kurz.
 
 - Nun öffnest du ein Browserfenster im Google Chrome und gibst oben im Suchfeld die IP-Adresse mitsamt dem Port ein, die du soeben aufgeschrieben hast.
@@ -97,7 +97,6 @@ Klicke nun oben rechts auf Create [VM](https://de.wikipedia.org/wiki/Virtuelle_M
 
 Super. Du hast nun deine erste [VM](https://de.wikipedia.org/wiki/Virtuelle_Maschine) erstellt. Starte diese. Das Linux auf der VM muss jetzt noch eingerichtet werden, damit wir anschliessend den Dienst [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) auf ihr installieren können.
 
-<<<<<<< HEAD
 - Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
 - Dort dann auf Console klicken.
 - Nun "_Try or Install Ubuntu Server anwählen_".
@@ -106,12 +105,10 @@ Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
 Dort auf Console klicken.
 
 Nun "_Try or Install Ubuntu Server anwählen_".
->>>>>>> 0ed5121e7259c0a42b904cf49729e5a1429490e5
 
 Folgendermassen gehst du nun durch die Installation deines Ubuntu-Servers
 1.  Sprache: English
 2.  Continue without updating
-<<<<<<< HEAD
 3.  Hier alles belassen wie es ist und einfach auf "_Done_"
 4.  Beim nächsten Fenster sicherstellen, dass oben "_Ubuntu Server_" angekreuzt ist -> Done
 5.  Bei den Netzwerkeinstellungen auch alles so lassen wie es ist aber hier etwas wichtiges noch kurz
@@ -121,19 +118,18 @@ Folgendermassen gehst du nun durch die Installation deines Ubuntu-Servers
 3.  Mirror auch lassen -> Done -> Continue
 4.  Beim Fenster "_Guided storage configuration_" musst du auf die Pfeiltaste nach unten klicken, bis die Option "_Done_" grün markiert ist. Danach Enter
 5.   Storage Configuration -> Done
-6.   Continue
+6.   Continue  
 =======
-3.  Hier alles belassen wie es ist und auf "_Done_" klicken
-4.  Beim nächsten Fenster sicherstellen, dass oben "_Ubuntu Server_" angekreuzt ist -> Done
-5.  Bei den Netzwerkeinstellungen auch alles so lassen wie es ist aber hier etwas wichtiges noch kurz
+1.  Hier alles belassen wie es ist und auf "_Done_" klicken
+2.  Beim nächsten Fenster sicherstellen, dass oben "_Ubuntu Server_" angekreuzt ist -> Done
+3.  Bei den Netzwerkeinstellungen auch alles so lassen wie es ist aber hier etwas wichtiges noch kurz
   > **Schreibe dir die IP der VM auf, diese wirst du später brauchen.**
-6.  Wenn du die IP-Adresse aufgeschrieben hast -> Done
-7.  Bei Proxy nichts ändern -> Done
-8.  Bei Mirror nichts ändern -> Done -> Continue
-9.  Beim Fenster "_Guided storage configuration_" musst du auf die Pfeiltaste nach unten klicken, bis die Option "_Done_" grün markiert ist. Danach Enter drücken
-10.   Storage Configuration -> Done
-11.   Continue
->>>>>>> 0ed5121e7259c0a42b904cf49729e5a1429490e5
+1.  Wenn du die IP-Adresse aufgeschrieben hast -> Done
+2.  Bei Proxy nichts ändern -> Done
+3.  Bei Mirror nichts ändern -> Done -> Continue
+4.  Beim Fenster "_Guided storage configuration_" musst du auf die Pfeiltaste nach unten klicken, bis die Option "_Done_" grün markiert ist. Danach Enter drücken
+5.    Storage Configuration -> Done
+6.    Continue
 
 Als finalen Schritt musst du nun die Benutzerangaben konfigurieren. Mache dies wie folgt:
 
