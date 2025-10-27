@@ -99,8 +99,8 @@ Super. Du hast nun deine erste [VM](https://de.wikipedia.org/wiki/Virtuelle_Masc
 
 - Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
 - Dort dann auf Console klicken.
-- Nun "_Try or Install Ubuntu Server anwählen_".
-=======
+- Nun "_Try or Install Ubuntu Server anwählen_".  
+=======  
 Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
 Dort auf Console klicken.
 
