@@ -1,269 +1,452 @@
-# Schnuppern
-Informatiker EFZ Plattformentwicklung   
 
-## Auftrag:
-Der Auftrag ist es, einen Proxmox Server aufzusetzen und zu konfigurieren. Anschliessend wirst du auf dem Proxmox Server eine virtuelle Maschine erstellen und einrichten. Die virtuelle Maschine wird als Docker Server konfiguriert. In Docker können dann verschiedene Dienste, wie Websites, Home-Assistant, Passwort-Vaults, usw betrieben werden. Es gibt praktisch keine Grenzen.
+# Schnupperlehre: Informatiker EFZ Plattformentwicklung 🧑‍💻
 
-In diesem Auftrag wird öfters der Begriff «Virtuelle Maschine» vorkommen. Wir kürzen ihn daher ab jetzt mit «VM» ab.
+## Auftrag: Grundlagen für moderne IT-Dienste schaffen
 
-Hilfsmittel:
-- Internet
-- Mitarbeiter
+Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzurichten. Wir werden dazu **Proxmox** installieren, um damit **Virtuelle Maschinen (VMs)** zu erstellen. Auf einer VM richten wir **Docker** ein, um darauf Dienste wie **Paperless** zu betreiben.
 
-Wir fangen mit der Installation von [Proxmox](https://de.wikipedia.org/wiki/Proxmox_VE) an. Es ist die Grundlage des Projektes.
+> **Was du lernen wirst:** Du lernst die Grundlagen der **Virtualisierung** kennen. Das ist eine Schlüsseltechnologie in der heutigen IT, die es erlaubt, mehrere voneinander unabhängige Computersysteme auf nur einem physischen PC zu betreiben.
 
-## Installation Proxmox:
+**Hilfsmittel:**
 
-- Nimm den von uns zur Verfügung gestellten USB Stick und stecke ihn in einen USB Port des PCs.
-- Nun startest du den PC.
+-   Internet
+    
+-   Mitarbeiter (dein Betreuer)
+    
 
-> **_INFO💡_**
-> Auf dem USB-Stick befindet sich ein sogenanntes "Proxmox-Image".
+----------
 
-- Sobald [Proxmox](https://de.wikipedia.org/wiki/Proxmox_VE) gestartet hat kannst du auf "Install Proxmox VE (Graphical)" drücken
-- Bei der EULA klickst du auf "I agree"
-- Beim nächsten Fenster kannst du unten auf "Next" klicken
-- Bei Location and Timezone bei Country "Switzerland" auswählen und beim Tastatur Layout auf "Swiss-German" und dann weiter auf "Next"
-- Als Passwort "Welcome.2024" setzen und das Passwort bei "Confirm Password" nochmals wiederholen und bei der Email "schnuppernbrienz@gmail.com" eingeben, dann "Next"
-- Netzwerkkonfiguration kannst du bei "IP Address (CIDR)" die folgende Adresse eingeben: "172.18.68.38", dann auf "Next"
-- Zuletzt nun noch auf "Install"
-- Jetzt dauert es ein Bisschen, bis Proxmox installiert ist
-- Dann auf "_Reboot_".
+## 1. Installation von Proxmox VE (Virtual Environment)
 
----
+**Proxmox VE** ist eine kostenlose Software, mit der du **VMs** einfach erstellen und verwalten kannst. Es ist die Basis für unser Projekt.
 
-Glückwunsch. Du hast erfolgreich [Proxmox](https://de.wikipedia.org/wiki/Proxmox_VE) konfiguriert.
-Auf dem Proxmox-Server steht nun die Anweisung, dass du über den Webbrowser auf das WebGUI von Proxmox gehen sollst.
+### Vorbereitung des PCs
 
-## Installation VM
+1.  Nimm den bereitgestellten **USB-Stick** und stecke ihn in einen freien USB-Anschluss des PCs.
+    
+2.  **Starte den PC** neu. Der PC wird nun vom USB-Stick booten (starten).  
+Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die Taste F12 drücken. Damit gelangst du ins Boot-Menü und kannst den USB-Stick als Startmedium auswählen.
+    
 
-> **_INFO💡_**
-> Auf dem PC links von dir hast du nun Proxmox installiert und die Umgebung läuft nun auf dieser Maschine. Wir wollen nun von einem anderen Computer aus darauf zugreifen, konkret vom Laptop aus.
-> Dafür - notiere dir gleich die IP-Adresse und den Port der auf dem Proxmox-Interface steht.
-> Zum Beispiel wäre das "172.18.68.38:4008".
-> Damit du den Bildschirm in der Mitte nun für den Laptop brauchen kannst, konsultiere mich kurz.
+> INFO 💡
+> 
+> Auf dem USB-Stick befindet sich ein Proxmox-Image. Das ist eine Installationsdatei, wie du sie vielleicht von der Installation eines normalen Betriebssystems wie z.B. Windows kennst.
 
-- Nun öffnest du ein Browserfenster im Google Chrome und gibst oben im Suchfeld die IP-Adresse mitsamt dem Port ein, die du soeben aufgeschrieben hast.
-- Damit greifst du auf deinen Proxmox Server zu über das Netz. Hier werden wir dann einige spannende Dinge einrichten.
+### Der Installationsprozess
 
-> **_INFO💡_**
-> Nun kommt die Meldung "Dies ist keine sichere Verbindung" mit dem Vermerk, dass hier sensible Daten gestohlen werden könnten. 
-> Dies ist an und für sich keine Fehlinformation, jedoch ist das hier nicht relevant, unter Anderem, da wir hier keine heiklen Daten austauschen und sich der Server in unserem Netz befindet. Damit ein Angreifer also Daten stehlen könnte, müsste er zuerst auf unser Netz zugreifen können. Wenn du allerdings im Internet auf Seiten stösst mit dieser Warnung gilt es, diese Ernst zu nehmen. Ungesicherte Webseiten sind zu vermeiden. In unserer Schnupper-Laborumgebung kannst du diese Warnung jedoch umgehen, indem du unten auf "Erweitert" und dann auf den unterstrichenen und blau markierten Text "Weiter zu ..ip.." klickst.
+1.  Sobald der Proxmox-Installer gestartet ist, wähle **"Install Proxmox VE (Graphical)"** aus.
+    
+2.  Akzeptiere die Lizenzvereinbarung (EULA) mit **"I agree"**.
+    
+3.  Im nächsten Fenster klickst du unten einfach auf **"Next"**.
+    
+4.  **Standort und Zeitzone:**
+    
+    -   Wähle bei **"Country"** (Land) **"Switzerland"** (Schweiz) aus.
+        
+    -   Wähle beim **Tastatur-Layout** **"Swiss-German"** aus.
+        
+    -   Klicke dann auf **"Next"**.
+        
+5.  **Passwort und E-Mail:**
+    
+    -   Setze als Passwort **"Welcome.2024"**.
+        
+    -   Wiederhole das Passwort bei **"Confirm Password"**.
+        
+    -   Gib bei der E-Mail-Adresse **"schnuppernbrienz@gmail.com"** ein.
+        
+    -   Klicke auf **"Next"**.
+        
 
-**Voila! Der Zugriff auf den Proxmox-Server hat nun geklappt. Gratulation**
+> Wichtig 🚨
+> 
+> Im Rahmen dieser Übung verwenden wir aus Einfachheitsgründen überall das gleiche, relativ einfache Passwort. In einem produktiven (echt genutzten) System musst du aber immer sichere und unterschiedliche Passwörter verwenden!
 
-- Melde dich als "_root_" mit dem Passwort an, dass du vorhin gesetzt hast an ("_Welcome.2024_")
-- Du bist nun auf dem Webgui von [Proxmox](https://de.wikipedia.org/wiki/Proxmox_VE). Von hier aus kannst du Virtuelle Maschinen erstellen, konfigurieren, überwachen und vieles mehr.
-- Schau dich gerne ein wenig um.
+6.  **Netzwerkkonfiguration:**
+    
+    -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42"** ein.
+        
+    -   Klicke dann auf **"Next"**.
+        
+7.  Bestätige die Installation, indem du auf **"Install"** klickst.
+    
+8.  Die Installation dauert einen Moment. Wenn sie abgeschlossen ist, klicke auf **"Reboot"** (Neustart).
+    
 
-- Damit wir später eine VM kreieren können, brauchen wir noch ein ISO-Image, das später auf der VM installiert werden soll.
-- Wir nehmen dafür ein Ubuntu-Image, das ich bereits auf deinem Laptop platziert habe.
+**Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
 
-- Dieses musst du nur noch hochladen auf deinen Proxmox-Server.
-- Klicke dich dafür zunächst durch die Baumstruktur oben rechts "Datacenter > pve" und klappe "pve" aus.
-- Dort dann auf "_local (pve)_" klicken.
-- Dann auf "_ISO Images_" -> Upload -> Select File -> Downloads -> Klick auf ubuntu-22.04.4-live-server-amd64 -> "_öffnen_" -> "_Upload_".
+----------
 
-Dann öffnet sich ein Fenster, dass du einfach schliessen kannst. Nicht auf Download klicken.
+## 2. Erstellung einer Virtuellen Maschine (VM)
 
-Klicke nun oben rechts auf Create [VM](https://de.wikipedia.org/wiki/Virtuelle_Maschine) und kreiere eine [VM](https://de.wikipedia.org/wiki/Virtuelle_Maschine) mit genau diesen Angaben 
+Eine **VM** ist ein vollständiger, eigenständiger virtueller Computer, der innerhalb von Proxmox läuft. Wir erstellen eine VM, die später unser **Docker Server** sein wird.
 
-- General:
-  - Node: so belassen wie es ist
-  - VM ID: 100
-  - Name: Docker
-  - Resource Pool: leer lassen
-- OS:
-  - Storage: local
-  - ISO-Image: ubuntu-22.04.4-live-server-amd64.iso
-  - Type: Linux
-  - Version: 6.x -2.6 Kernel
-- System:
-  - Qemu Agent ankreuzen, den Rest so lassen wie es ist
-- Disks:
-  - Disk Size (GiB): 100 GB, Rest beim Standard belassen
-- CPU:
-  - Sockets: 1
-  - Cores: 8
-  - Rest: Standard
-- Memory:
-  - Memory (MiB): 8192
-- Network:
-  - Alles so belassen
- 
-- Confirm:
-  - Start after created ankreuzen
-  - Dann auf "_Finish_"
+### Zugriff auf das Proxmox Web-Interface
 
-Super. Du hast nun deine erste [VM](https://de.wikipedia.org/wiki/Virtuelle_Maschine) erstellt. Starte diese. Das Linux auf der VM muss jetzt noch eingerichtet werden, damit wir anschliessend den Dienst [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) auf ihr installieren können.
+Der Proxmox-Server läuft nun auf dem PC neben dir. Wir greifen nun von deinem Laptop aus über das Netzwerk darauf zu. 
 
-- Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
-- Dort dann auf Console klicken.
-- Nun "_Try or Install Ubuntu Server anwählen_".  
-=======  
-Nun klickst du oben rechts in der Baumstruktur auf deine VM; 100 (Docker)
-Dort auf Console klicken.
+1.  **Notiere dir die Adresse:** Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel **"[https://172.18.68.42:8006](https://www.google.com/url?sa=E&source=gmail&q=https://172.18.68.42:8006)"**.
 
-Nun "_Try or Install Ubuntu Server anwählen_".
+2.  Melde dich bei deinem Betreuer, damit wir den Monitor umstellen können.
 
-Folgendermassen gehst du nun durch die Installation deines Ubuntu-Servers
-1.  Sprache: English
-2.  Continue without updating
-3.  Hier alles belassen wie es ist und einfach auf "_Done_"
-4.  Beim nächsten Fenster sicherstellen, dass oben "_Ubuntu Server_" angekreuzt ist -> Done
-5.  Bei den Netzwerkeinstellungen auch alles so lassen wie es ist aber hier etwas wichtiges noch kurz
-  > **Schreibe dir die IP der VM auf, diese wirst du später brauchen.**
-1.  Wenn du die IP-Adresse aufgeschrieben hast -> Done
-2.  Bei Proxy auch lassen -> Done
-3.  Mirror auch lassen -> Done -> Continue
-4.  Beim Fenster "_Guided storage configuration_" musst du auf die Pfeiltaste nach unten klicken, bis die Option "_Done_" grün markiert ist. Danach Enter
-5.   Storage Configuration -> Done
-6.   Continue  
-=======
-1.  Hier alles belassen wie es ist und auf "_Done_" klicken
-2.  Beim nächsten Fenster sicherstellen, dass oben "_Ubuntu Server_" angekreuzt ist -> Done
-3.  Bei den Netzwerkeinstellungen auch alles so lassen wie es ist aber hier etwas wichtiges noch kurz
-  > **Schreibe dir die IP der VM auf, diese wirst du später brauchen.**
-1.  Wenn du die IP-Adresse aufgeschrieben hast -> Done
-2.  Bei Proxy nichts ändern -> Done
-3.  Bei Mirror nichts ändern -> Done -> Continue
-4.  Beim Fenster "_Guided storage configuration_" musst du auf die Pfeiltaste nach unten klicken, bis die Option "_Done_" grün markiert ist. Danach Enter drücken
-5.    Storage Configuration -> Done
-6.    Continue
+3.  **Öffne den Browser** (Google Chrome) auf deinem Laptop.
+    
+4.  Gib die aufgeschriebene Adresse (z. B. **`https://172.18.68.42:8006`**) oben in das Suchfeld ein und drücke Enter. Du greifst nun über das Netzwerk auf deinen Proxmox Server zu.
+    
 
-Als finalen Schritt musst du nun die Benutzerangaben konfigurieren. Mache dies wie folgt:
+> INFO 💡: Sicherheitswarnung
+> 
+> Es erscheint die Meldung "Dies ist keine sichere Verbindung". Das ist normal, da Proxmox ein eigenes, lokales Sicherheitszertifikat verwendet. Da wir uns in unserem internen Übungsnetz befinden und keine heiklen Daten austauschen, kannst du diese Warnung hier ignorieren. Klicke auf "Erweitert" und dann auf den Link "Weiter zu ... (unsicher)". Im normalen Internet solltest du solche Warnungen aber immer ernst nehmen!
 
-- Name: Dein Name
-- Servername: docker
-- Username: sysadmin
-- Passwort: Welcome.2024
-> **Hinweis: Überprüfe deine Angaben nochmals, und stelle sicher, dass alles richtig ist. Womöglich sind Y und Z bei deinen Eingaben vertauscht**
-- Nachdem du deine Angaben korrigiert hast: Done
-- Upgrade: "_Skip for now_" -> Continue
-- Install OpenSSH server: Ankreuzen mit der Leertaste, danach mit der Pfeiltaste zu "_Done_" navigieren
-- Featured Server Snaps: Keine ankreuzen -> Done
+4.  **Anmeldung:** Melde dich an mit:
+    
+    -   Benutzername: **`root`**
+        
+    -   Passwort: **`Welcome.2024`**
+        
 
-Die VM wird nun installiert. Dies dauert einen Moment.
-Sobald die Installation abgeschlossen ist, machst du folgendes:
-- Klicke im Menü links unter "_Console_" kurz auf "_Hardware_"
-- Dort auf CD/DVD Drive
-- Und dort entfernst du unser Ubuntu Image mithilfe von "_Remove_", wenn du dir unsicher bist -> besser fragen
-- Nun gehst du wieder zurück zu "_Console_"
-- Dann die soeben installierte VM neu starten mit "Reboot Now".
+Du bist nun auf der Weboberfläche (WebGUI) von Proxmox. Schau dich gerne ein wenig um.
 
+### Hochladen des Ubuntu-Installations-Images
 
-> **Nun konsultiere mich bitte kurz, dann verbinden wir uns vom Laptop per SSH mit der VM.**
+Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdatei) für das Betriebssystem der VM. Wir verwenden **Ubuntu Server** (ein Linux-Betriebssystem).
 
----
-## Installation Docker
-Nun müssen wir [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) installieren. In [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) werden später unsere Dienste laufen.
-Um [Docker](<https://de.wikipedia.org/wiki/Docker_(Software)>) zu installieren, musst du die folgenden Befehle eingeben -> kopiere diese einfach ins Terminal hinein, abtippen dauert zu lange: 
+1.  Klicke dich links durch die Baumstruktur: **Datacenter** > den Namen deines Nodes (z. B. **pve**).
+    
+2.  Klicke auf **`local (pve)`**.
+    
+3.  Klicke auf den Tab **"ISO Images"**.
+    
+4.  Klicke auf **"Upload"** > **"Select File"**.
+    
+5.  Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle **`ubuntu-server-image-xxx.iso`** (die genaue Versionsnummer lassen wir weg) aus.
+    
+6.  Klicke auf **"Öffnen"** und dann auf **"Upload"**.
+    
+7.  Das nun erscheinende kleine Fenster kannst du einfach schliessen.
+    
+
+### Erstellung der VM
+
+1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).
+    
+
+**Bereich** | **Einstellung**       | **Erklärung**  
+---         | ---                   | ---  
+**General** | **VM ID:** `100`      | Eine eindeutige Nummer für die VM.
+"           | **Name:** `Docker`    | Ein verständlicher Name für die VM.
+**OS** (Betriebssystem) | **ISO-Image:** `ubuntu-server-image-xxx.iso` | Wähle das hochgeladene Image aus.
+"           | **Type:** `Linux`     | Das Betriebssystem ist Linux.
+**Disks**   | **Disk Size (GiB):** `100`| Die Festplattengrösse der VM.
+**CPU** (Prozessor) | **Cores:** `8` | Die Anzahl der virtuellen Prozessorkerne, die der VM zur Verfügung stehen.
+**Memory** (Arbeitsspeicher) | **Memory (MiB):** `8192` | Die Grösse des Arbeitsspeichers in Megabyte (entspricht 8 GB).
+**Network** | Alles belassen (Standard) | Standard-Netzwerkverbindung.
+**Confirm** | **Start after created:** Ankreuzen | Die VM soll nach der Erstellung sofort starten.
+
+1.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet.
+    
+
+### Installation von Ubuntu Server auf der VM
+
+Das Betriebssystem muss nun auf der neuen VM installiert werden.
+
+1.  Klicke links in der Baumstruktur auf deine VM: **`100 (Docker)`**.
+    
+2.  Klicke auf **"Console"**. Du siehst nun den virtuellen Bildschirm deiner VM.
+    
+3.  Wähle **"Try or Install Ubuntu Server"** an.
+    
+
+**Folge nun den Installationsschritten:**
+
+1.  **Sprache:** Wähle **"English"**.
+    
+2.  Wähle **"Continue without updating"**.
+    
+3.  Bei den nächsten Schritten belässt du alles so, wie es ist, und klickst auf **"Done"**.
+    
+4.  Stelle sicher, dass **"Ubuntu Server"** oben angekreuzt ist, dann **"Done"**.
+    
+5.  **Netzwerkeinstellungen:** Belasse alles beim Standard.
+    
+    > Wichtig 📌
+    > 
+    > Schreibe dir die angezeigte IP-Adresse der VM (z. B. 172.18.68.x) unbedingt auf! Du wirst sie später brauchen, um auf die VM zuzugreifen.
+    
+6.  Klicke **"Done"**.
+    
+7.  **Proxy und Mirror:** Belasse alles beim Standard und klicke jeweils **"Done"** und dann **"Continue"**.
+    
+8.  **Guided storage configuration:** Navigiere mit der Pfeiltaste nach unten, bis die Option **"Done"** grün markiert ist. Drücke Enter.
+    
+9.  **Storage Configuration:** Klicke **"Done"**.
+    
+10.  Klicke **"Continue"**.
+    
+11.  **Benutzerangaben konfigurieren:**
+    
+    -   **Your name:** Gib deinen Namen ein.
+    -   **Server name:** docker
+    -   **Username:** sysadmin
+    -   **Passwort:** Welcome.2024
+    -   **Confirm password:** Welcome.2024
+        
+    Hinweis: Achte darauf, dass du das Tastatur-Layout richtig beachtest. Eventuell sind Y und Z vertauscht.
+    
+1.   Klicke **"Done"**.
+    
+2.   **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
+    
+3.   **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
+    
+4.   Navigiere zu **"Done"**.
+    
+5.   **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
+    
+
+Die Installation startet. Das kann einen Moment dauern.
+
+### Abschluss der VM-Installation
+
+1.  Klicke im Menü links unter **"Console"** kurz auf **"Hardware"**.
+    
+2.  Dort auf **"CD/DVD Drive"**.
+    
+3.  Klicke auf **"Remove"**, um das Installations-Image auszuwerfen.
+    
+4.  Gehe zurück zu **"Console"**.
+    
+5.  Starte die VM neu mit **"Reboot Now"**.
+    
+
+**Nun konsultiere mich bitte kurz. Wir werden uns jetzt vom Laptop per SSH (einem sicheren Netzwerkprotokoll) mit der VM verbinden.**
+
+----------
+
+## 3. Installation von Docker und Portainer
+
+**Docker** ist ein Werkzeug, mit dem man Software in isolierten Umgebungen (genannt **Container**) betreiben kann. **Portainer** ist eine Weboberfläche, um diese Container grafisch zu verwalten.
+
+### Installation von Docker auf der VM
+
+Kopiere die folgenden Befehle in dein Terminal (SSH-Verbindung zum Docker Server) und führe sie nacheinander aus. Mit diesen Befehlen wird das System aktualisiert und die offizielle Docker-Software-Quelle hinzugefügt.
+
+Wir aktualisieren die Liste der verfügbaren neuen Software-Pakete.
 
 ```
 sudo apt update
+
 ```
+
+Wir installieren Hilfsprogramme, die wir benötigen, um die offizielle Docker-Software-Quelle sicher hinzuzufügen.
+
 ```
 sudo apt install ca-certificates curl gnupg lsb-release
+
 ```
+
+Wir erstellen einen neuen Ordner für die Sicherheitsschlüssel (Keyrings) von Docker.
+
 ```
 sudo mkdir -p /etc/apt/keyrings
+
 ```
+
+Wir laden den offiziellen Sicherheitsschlüssel von Docker herunter und speichern ihn im neuen Ordner, um sicherzustellen, dass wir nur echte Docker-Software installieren.
+
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+
 ```
+
+Wir fügen die offizielle Docker-Webadresse als neue Software-Quelle zu deinem System hinzu.
 
 ```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
 ```
+
+Wir aktualisieren die Software-Liste ein zweites Mal, um die neue Docker-Quelle zu berücksichtigen.
 
 ```
 sudo apt update
-```
-
 
 ```
-sudo apt install docker-ce=5:25.0.0-1~ubuntu.22.04~jammy docker-ce-cli=5:25.0.0-1~ubuntu.22.04~jammy containerd.io docker-compose-plugin
+
+**Jetzt wird Docker installiert:**
+
+Wir installieren die Hauptkomponenten von Docker auf deinem Server.
+
 ```
+sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
+
+```
+
+**Starte den Docker-Dienst:**
+
+Wir starten den Docker-Dienst jetzt, damit er Container ausführen kann.
 
 ```
 sudo service docker start
-```
-Jetzt wollen wir Portainer installieren. Damit können wir unsere Container über eine grafische Oberfläche verwalten.
-Folgendermassen installieren wir das:
 
 ```
-sudo docker volume create portainer_data
-```
 
-```
-sudo docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-```
+### Installation von Portainer
 
-Damit hast du nun deinen ersten Container erstellt, auf welchem nun Portainer läuft.
+Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten ihn.
 
-## Konfiguration Portainer
-Nun kannst du auf dem PC, wo du das Proxmox-Webinterface geöffnet hast, ein weiteres Browserfenster öffnen.
-Dort gibst du die aufgeschriebene IP deiner VM ein mit dem Port 9443
-https://172.18.68.x:9443
+1.  **Erstellen des Speicherbereichs (Volume):**
+    
+    Wir erstellen einen speziellen Speicherplatz (ein sogenanntes Volume) auf dem Server. Hier speichert Portainer seine eigenen Einstellungen ab.
+    
+    ```
+    sudo docker volume create portainer_data
+    
+    ```
+    
+2.  **Starten des Portainer-Containers:**
+    
+    Wir starten den Portainer-Container im Hintergrund, leiten den Port 9443 weiter und geben ihm Zugriff auf die Docker-Verwaltung.
+    
+    ```
+    sudo docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
+    
+    ```
+    
+    > **_Erklärung:_**
+    > -   `docker run`: Starte einen neuen Container.
+    > -   `-d`: Im Hintergrund (detached) ausführen.
+    > -   `-p 9443:9443`: Der Container-Port **9443** wird auf den Server-Port **9443** umgeleitet.
+    > -   `--name portainer`: Der Container bekommt den Namen `portainer`.
+    >     
+    
 
-Hier kannst du dich nun mit dem Benutzernamen "_admin_" und dem Passwort "_Welcome2024_" anmelden.
+----------
 
-Nun bist du auf der Oberfläche von Portainer.
-Hier klickst du auf "_Get Started_".
-Danach wird dir eine Umgebung angezeigt namens "_local_".
-Öffne diese.
+## 4. Konfiguration von Portainer
 
-## Bereitstellung Paperless
-Links hast du nun eine Menüleiste
-- Klick auf "_Stacks_"
-- Oben rechts dann auf "_Add Stack_"
-- Namen "_teststack_" definieren
-- Build Method auf "_Web editor_" belassen
-- Klick in den Web editor
+Nun kannst du über das Web-Interface von Portainer auf deinen Docker Server zugreifen.
 
-In diesem Feld wollen wir die Konfigurationen für dein erstes Docker-Projekt einfügen.
-Und zwar wollen wir mit einem Container einen Dienst namens [Paperless](<https://docs.paperless-ngx.com>) zum Laufen bringen
+1.  Öffne ein **neues Browserfenster** auf deinem Laptop.
+    
+2.  Gib die IP-Adresse deiner VM ein, gefolgt von **`:9443`** (dem Port von Portainer):
+    
+    -   Beispiel: `https://172.18.68.x:9443`
+        
+3.  Auch hier erscheint die Sicherheitswarnung, die du mit **"Erweitert"** und **"Weiter zu... (unsicher)"** umgehen kannst.
+    
+4.  **Anmeldung bei Portainer:**
+    
+    -   Erstelle einen neuen Benutzer mit dem Benutzernamen **`admin`**.
+        
+    -   Wähle das Passwort **`Welcome.2024`**.
+        
+    -   Klicke auf **"Create user"**.
+        
+5.  Klicke auf **"Get Started"** und dann auf die Umgebung **`local`**.
+    
 
-Dafür machst du folgendes
-- klick <kbd>Windows + E</kbd>
-- gehe zu "_Dokumente_"
-- Öffne das paperless.txt-File
-- Nun klickst du <kbd>Ctrl + A</kbd> und markierst alles
-- Danach klickst du <kbd>Ctrl + C</kbd> um es zu kopieren
-- Dann gehst du wieder zu Portainer zurück und fügst das Ganze in den Web-Editor ein mit <kbd>Ctrl + V</kbd>.
+Du bist nun auf der Oberfläche von Portainer.
 
-Danach kannst du auf "_Deploy the Stack_" ganz unten klicken.
+----------
 
----
-Nun wollen wir noch einen User generieren für dein Paperless.
-Dafür müssen wir  die Konsole in Container öffnen.
-- Klick auf "_Containers_" in Portainer
-- Klick auf "_teststack-webserver..._"
-- Unten hast du nun eine Leiste mit verschiedenen funktionen wie "_Logs_", "_Inspect_", "_Stats_" etc.
-- Wir klicken hier auf "_Console_"
-- Dann auf "_Connect_"
-- Nun geben wir folgenden Befehl ein:
-```
-python3 manage.py createsuperuser
-```
-- Bei Username gibst du "_admin_" ein
-- Bei Email <kbd>Enter</kbd> klicken
-- PW: "_Welcome2024_", so wie du es dir gewohnt bist ;) 
+## 5. Bereitstellung des Paperless-Dienstes
 
-Nun öffnest du nochmals einen neuen Tab in Chrome und tippst die IP der VM und den entsprechenden Port, welcher in dem Fall 8010 ist, ein.
+**Paperless** ist ein Dokumentenverwaltungssystem, das wir nun als unseren ersten Dienst in einem Container starten werden.
 
-http://172.18.68.x:8010
+### Erstellen eines "Stacks"
 
-Dort meldest du dich mit deinem vorhin erstellten User an.
-Nun solltest du die Oberfläche von Paperless sehen.
+In Docker bezeichnet ein **Stack** (Stapel) eine Gruppe von zusammengehörigen Containern, die man zusammen verwaltet.
 
-- Jetzt klickst du rechts bei "Upload new documents" auf "_Browse files_"
-- Dann auf "_Desktop_"
-- Danach wählst du das "_Dokument.pdf_" an
-- Und dann auf "_öffnen_"
-- Unter Documents im Paperless, hast du nun dein erstes Dokument hochgeladen.
-- Herzlichen Glückwunsch ;)
+1.  Klicke in der Menüleiste links auf **"Stacks"**.
+    
+2.  Klicke oben rechts auf **"Add Stack"**.
+    
+3.  Definiere den Namen: **`paperless-stack`**.
+    
+4.  Belasse die **Build Method** auf **"Web editor"**.
+    
 
+### Konfiguration von Paperless
 
+Wir verwenden eine spezielle Konfigurationsdatei (genannt `docker-compose.yml`), um Paperless zu starten.
+
+1.  Drücke auf deinem Laptop die Tasten <kbd>Windows + E</kbd>, um den **Datei-Explorer** zu öffnen.
+    
+2.  Gehe zum Ordner **"Dokumente"**.
+    
+3.  Öffne die Datei **`paperless.txt`**.
+    
+4.  Markiere den gesamten Text in der Datei (<kbd>Strg + A</kbd>) und kopiere ihn (<kbd>Strg + C</kbd>).
+    
+5.  Gehe zurück zu Portainer und füge den kopierten Text in das Feld des **Web-Editors** ein (<kbd>Strg + V</kbd>).
+    
+6.  Klicke ganz unten auf **"Deploy the Stack"**.
+    
+
+Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet.
+
+### Erstellen eines Paperless-Benutzers
+
+Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container erstellt werden.
+
+1.  Klicke in Portainer auf **"Containers"**.
+    
+2.  Klicke auf den Namen des Paperless-Webservers (er beginnt mit **`paperless-stack-webserver...`**).
+    
+3.  Klicke auf den Tab **"Console"** und dann auf **"Connect"**.
+    
+4.  Gib den folgenden Befehl ein:
+    
+    Bash
+    
+    ```
+    python3 manage.py createsuperuser
+    
+    ```
+    
+5.  **Benutzer-Details:**
+    
+    -   **Username:** `admin`
+        
+    -   **Email address:** Drücke einfach <kbd>Enter</kbd> (du brauchst keine E-Mail).
+        
+    -   **Password:** `Welcome2024`
+        
+    -   **Password (again):** `Welcome2024`
+        
+
+### Zugriff auf Paperless
+
+Paperless läuft nun auf dem Port **8010** deiner VM.
+
+1.  Öffne einen **neuen Tab** im Browser.
+    
+2.  Gib die IP-Adresse deiner VM mit dem Port **8010** ein:
+    
+    -   Beispiel: `http://172.18.68.x:8010`
+        
+3.  Melde dich mit dem soeben erstellten Benutzer an:
+    
+    -   Username: `admin`
+        
+    -   Passwort: `Welcome2024`
+        
+
+Du siehst nun die Oberfläche von Paperless.
+
+### Hochladen des ersten Dokuments
+
+1.  Klicke bei **"Upload new documents"** auf **"Browse files"**.
+    
+2.  Navigiere zum **Desktop**.
+    
+3.  Wähle die Datei **`Dokument.pdf`** an.
+    
+4.  Klicke auf **"öffnen"** und dann auf **"Upload"**.
+    
+
+Unter **"Documents"** in Paperless siehst du nun dein erstes hochgeladenes Dokument. **Herzlichen Glückwunsch!** Du hast erfolgreich eine VM erstellt und darauf einen Dienst in einem Docker-Container bereitgestellt.
