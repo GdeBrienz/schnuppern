@@ -1,0 +1,13 @@
+# Tagesplan Schnupperlehre: Informatiker/in EFZ Plattformentwicklung
+- Begrüssung und Vorstellung
+- Ämtli
+- Rundgang durch die Gemeinde
+- Erklärung im Serverraum
+- Ablauf der Ausbildung erklären
+- Erklärung Helpdesk und Zeiterfassung
+- Auftrag: Proxmox, Docker & Paperless
+- Erklärung interne Dienste
+- Erklärung MDM Filewave
+- Arbeit an echten Tickets (nach Möglichkeit)
+- Auftrag Website
+- Auftrag Netzwerkdiagramm
