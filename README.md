@@ -424,13 +424,17 @@ Du siehst nun die Oberfläche von Paperless.
 
 ### Hochladen des ersten Dokuments
 
-1.  Klicke bei **"Upload new documents"** auf **"Browse files"**.
+1.  Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Dokument.pdf.
+
+2.  Suche den Download-Button und lade das Dokument herunter. Es landet in deinem Download-Ordner auf dem Computer. 
+
+3.  Klicke bei **"Upload new documents"** auf **"Browse files"**.
     
-2.  Navigiere zum USB-Stick.
+4.  Navigiere zu **Downloads**.
     
-3.  Wähle die Datei **`Dokument.pdf`** an.
+5.  Wähle die Datei **`Dokument.pdf`** an.
     
-4.  Klicke auf **"öffnen"** und dann auf **"Upload"**.
+6.  Klicke auf **"öffnen"** und dann auf **"Upload"**.
     
 
 Unter **"Documents"** in Paperless siehst du nun dein erstes hochgeladenes Dokument. **Herzlichen Glückwunsch!** Du hast erfolgreich eine VM erstellt und darauf einen Dienst in einem Docker-Container bereitgestellt.
