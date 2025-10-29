@@ -155,8 +155,6 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
     
 2.  Klicke auf **"Console"**. Du siehst nun den virtuellen Bildschirm deiner VM.
     
-3.  Wähle **"Try or Install Ubuntu Server"** an.
-    
 
 **Folge nun den Installationsschritten:**
 
@@ -194,15 +192,15 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
         
     Hinweis: Achte darauf, dass du das Tastatur-Layout richtig beachtest. Eventuell sind Y und Z vertauscht.
     
-1.   Klicke **"Done"**.
+12.  Klicke **"Done"**.
     
-2.   **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
+13.  **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
     
-3.   **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
+14.  **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
     
-4.   Navigiere zu **"Done"**.
+15.  Navigiere zu **"Done"**.
     
-5.   **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
+16.  **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
     
 
 Die Installation startet. Das kann einen Moment dauern.
@@ -361,7 +359,7 @@ In Docker bezeichnet ein **Stack** (Stapel) eine Gruppe von zusammengehörigen C
 ### Konfiguration von Paperless
 Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), um Paperless zu starten. Diese Datei definiert alle Container und Einstellungen, die Paperless benötigt. Da die Datei im selben GitHub-Repository wie diese Anleitung liegt, führen wir die folgenden Schritte aus, um den Code zu kopieren:
 
-1. Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/docker-compose.yml.
+1. Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/docker-compose.yml.
 
 2. Klicke auf den Button "Raw". Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
 
@@ -424,7 +422,7 @@ Du siehst nun die Oberfläche von Paperless.
 
 ### Hochladen des ersten Dokuments
 
-1.  Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Dokument.pdf.
+1.  Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/Dokument.pdf.
 
 2.  Suche den Download-Button und lade das Dokument herunter. Es landet in deinem Download-Ordner auf dem Computer. 
 
