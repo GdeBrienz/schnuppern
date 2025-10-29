@@ -85,6 +85,7 @@
 * **Ziel:** Die attraktiven Weiterbildungsmöglichkeiten aufzeigen.
 * **Inhalte:**
     * **Nach der Lehre:** Berufsabschluss mit eidgenössischem Fähigkeitszeugnis (EFZ).
+    * **Zertifizierungen:** Sie haben die Möglichkeit, direkt nach der Lehre branchenrelevante Zertifikate von Herstellern zu erwerben (z.B. von Microsoft, Cisco, Linux Foundation, Cloud-Anbietern wie Azure oder AWS). Diese Zertifikate sind in der IT sehr gefragt und ergänzen Ihre Ausbildung optimal.
     * **Weiterbildungsmöglichkeiten:**
         * **Berufsprüfung (BP) / Höhere Fachprüfung (HFP):** Spezialisierung (z.B. ICT-System- und Netzwerktechniker/in mit eidg. Fachausweis).
         * **Höhere Fachschule (HF):** Dipl. Techniker/in HF Informatik.
