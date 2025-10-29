@@ -65,7 +65,7 @@ Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die T
 
 6.  **Netzwerkkonfiguration:**
     
-    -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42"** ein.
+    -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
         
     -   Klicke dann auf **"Next"**.
         
@@ -120,7 +120,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
     
 4.  Klicke auf **"Upload"** > **"Select File"**.
     
-5.  Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle **`ubuntu-server-image-xxx.iso`** (die genaue Versionsnummer lassen wir weg) aus.
+5.  Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle **`ubuntu-XX.XX.X-live-server-amd64.iso`** (die genaue Versionsnummer lassen wir weg) aus.
     
 6.  Klicke auf **"Öffnen"** und dann auf **"Upload"**.
     
@@ -136,7 +136,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
 ---         | ---                   | ---  
 **General** | **VM ID:** `100`      | Eine eindeutige Nummer für die VM.
 "           | **Name:** `Docker`    | Ein verständlicher Name für die VM.
-**OS** (Betriebssystem) | **ISO-Image:** `ubuntu-server-image-xxx.iso` | Wähle das hochgeladene Image aus.
+**OS** (Betriebssystem) | **ISO-Image:** `ubuntu-XX.XX.X-live-server-amd64.iso` | Wähle das hochgeladene Image aus.
 "           | **Type:** `Linux`     | Das Betriebssystem ist Linux.
 **Disks**   | **Disk Size (GiB):** `100`| Die Festplattengrösse der VM.
 **CPU** (Prozessor) | **Cores:** `8` | Die Anzahl der virtuellen Prozessorkerne, die der VM zur Verfügung stehen.
@@ -144,7 +144,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
 **Network** | Alles belassen (Standard) | Standard-Netzwerkverbindung.
 **Confirm** | **Start after created:** Ankreuzen | Die VM soll nach der Erstellung sofort starten.
 
-1.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet.
+2.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet.
     
 
 ### Installation von Ubuntu Server auf der VM
@@ -236,44 +236,36 @@ Wir aktualisieren die Liste der verfügbaren neuen Software-Pakete.
 
 ```
 sudo apt update
-
 ```
 
 Wir installieren Hilfsprogramme, die wir benötigen, um die offizielle Docker-Software-Quelle sicher hinzuzufügen.
 
 ```
 sudo apt install ca-certificates curl gnupg lsb-release
-
 ```
 
 Wir erstellen einen neuen Ordner für die Sicherheitsschlüssel (Keyrings) von Docker.
 
 ```
 sudo mkdir -p /etc/apt/keyrings
-
 ```
 
 Wir laden den offiziellen Sicherheitsschlüssel von Docker herunter und speichern ihn im neuen Ordner, um sicherzustellen, dass wir nur echte Docker-Software installieren.
-
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-
 ```
 
 Wir fügen die offizielle Docker-Webadresse als neue Software-Quelle zu deinem System hinzu.
-
 ```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-
 ```
 
 Wir aktualisieren die Software-Liste ein zweites Mal, um die neue Docker-Quelle zu berücksichtigen.
 
 ```
 sudo apt update
-
 ```
 
 **Jetzt wird Docker installiert:**
@@ -282,7 +274,6 @@ Wir installieren die Hauptkomponenten von Docker auf deinem Server.
 
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
 ```
 
 **Starte den Docker-Dienst:**
@@ -291,7 +282,6 @@ Wir starten den Docker-Dienst jetzt, damit er Container ausführen kann.
 
 ```
 sudo service docker start
-
 ```
 
 ### Installation von Portainer
@@ -301,10 +291,9 @@ Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten
 1.  **Erstellen des Speicherbereichs (Volume):**
     
     Wir erstellen einen speziellen Speicherplatz (ein sogenanntes Volume) auf dem Server. Hier speichert Portainer seine eigenen Einstellungen ab.
-    
+
     ```
     sudo docker volume create portainer_data
-    
     ```
     
 2.  **Starten des Portainer-Containers:**
@@ -313,7 +302,6 @@ Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten
     
     ```
     sudo docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
-    
     ```
     
     > **_Erklärung:_**
@@ -371,23 +359,19 @@ In Docker bezeichnet ein **Stack** (Stapel) eine Gruppe von zusammengehörigen C
     
 
 ### Konfiguration von Paperless
+Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), um Paperless zu starten. Diese Datei definiert alle Container und Einstellungen, die Paperless benötigt. Da die Datei im selben GitHub-Repository wie diese Anleitung liegt, führen wir die folgenden Schritte aus, um den Code zu kopieren:
 
-Wir verwenden eine spezielle Konfigurationsdatei (genannt `docker-compose.yml`), um Paperless zu starten.
+1. Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/docker-compose.yml.
 
-1.  Drücke auf deinem Laptop die Tasten <kbd>Windows + E</kbd>, um den **Datei-Explorer** zu öffnen.
-    
-2.  Gehe zum Ordner **"Dokumente"**.
-    
-3.  Öffne die Datei **`paperless.txt`**.
-    
-4.  Markiere den gesamten Text in der Datei (<kbd>Strg + A</kbd>) und kopiere ihn (<kbd>Strg + C</kbd>).
-    
-5.  Gehe zurück zu Portainer und füge den kopierten Text in das Feld des **Web-Editors** ein (<kbd>Strg + V</kbd>).
-    
-6.  Klicke ganz unten auf **"Deploy the Stack"**.
-    
+2. Klicke auf den Button "Raw". Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
 
-Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet.
+3. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
+
+4. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (<kbd>Strg + V</kbd>).
+
+5. Klicke ganz unten auf "Deploy the Stack".
+
+Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet. Die Bereitstellung (Deployment) der einzelnen Container dauert einen Moment.
 
 ### Erstellen eines Paperless-Benutzers
 
@@ -414,26 +398,26 @@ Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container e
         
     -   **Email address:** Drücke einfach <kbd>Enter</kbd> (du brauchst keine E-Mail).
         
-    -   **Password:** `Welcome2024`
+    -   **Password:** `Welcome.2024`
         
-    -   **Password (again):** `Welcome2024`
+    -   **Password (again):** `Welcome.2024`
         
 
 ### Zugriff auf Paperless
 
-Paperless läuft nun auf dem Port **8010** deiner VM.
+Paperless läuft nun auf dem Port **8000** deiner VM.
 
 1.  Öffne einen **neuen Tab** im Browser.
     
-2.  Gib die IP-Adresse deiner VM mit dem Port **8010** ein:
+2.  Gib die IP-Adresse deiner VM mit dem Port **8000** ein:
     
-    -   Beispiel: `http://172.18.68.x:8010`
+    -   Beispiel: `http://172.18.68.x:8000`
         
 3.  Melde dich mit dem soeben erstellten Benutzer an:
     
     -   Username: `admin`
         
-    -   Passwort: `Welcome2024`
+    -   Passwort: `Welcome.2024`
         
 
 Du siehst nun die Oberfläche von Paperless.
@@ -442,7 +426,7 @@ Du siehst nun die Oberfläche von Paperless.
 
 1.  Klicke bei **"Upload new documents"** auf **"Browse files"**.
     
-2.  Navigiere zum **Desktop**.
+2.  Navigiere zum USB-Stick.
     
 3.  Wähle die Datei **`Dokument.pdf`** an.
     
