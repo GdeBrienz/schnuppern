@@ -64,14 +64,15 @@ Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die T
 > Im Rahmen dieser Übung verwenden wir aus Einfachheitsgründen überall das gleiche, relativ einfache Passwort. In einem produktiven (echt genutzten) System musst du aber immer sichere und unterschiedliche Passwörter verwenden!
 
 6.  **Netzwerkkonfiguration:**
-    
+    -   Gib bei **"Host Name** den Namen **"Proxmox.Brienz.local"** ein.
+
     -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
         
     -   Klicke dann auf **"Next"**.
         
-7.  Bestätige die Installation, indem du auf **"Install"** klickst.
+6.  Bestätige die Installation, indem du auf **"Install"** klickst.
     
-8.  Die Installation dauert einen Moment. Wenn sie abgeschlossen ist, klicke auf **"Reboot"** (Neustart).
+7.  Die Installation dauert einen Moment. Wenn sie abgeschlossen ist, klicke auf **"Reboot"** (Neustart).
     
 
 **Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
