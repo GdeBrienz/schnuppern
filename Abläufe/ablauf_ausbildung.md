@@ -57,7 +57,7 @@
 * **Inhalte:**
     * **Arbeitszeit:**
       * Die tägliche Sollarbeitszeit beträgt 8.4 Stunden.
-      * Wir arbeiten mit Gleitzeit. Es gibt eine sogenannte Blockzeit, in welcher Sie zwingend anwesend sein müssen (z.B. 09:00 bis 11:30 Uhr und 14:00 bis 16:00 Uhr).
+      * Wir arbeiten mit Gleitzeit. Es gibt eine sogenannte Blockzeit, in welcher Sie zwingend anwesend sein müssen (z.B. 08:00 bis 11:30 Uhr und 14:00 bis 17:00 Uhr).
       * Ausserhalb der Blockzeiten sind Sie sehr flexibel und können Ihren Arbeitsbeginn und -schluss frei wählen (sofern die Arbeit es zulässt). Dies ermöglicht eine gute Work-Life-Balance.
     * **Lohn:**
       * Lehrjahr 1  (BBC): CHF 300.00 + Spesen CHF 100.00 pro Monat
