@@ -72,7 +72,7 @@
 * **Inhalte:**
     * **Berufsfachschule:**
         * Besuch der Berufsfachschule (in der Regel **1 bis 2 Tage pro Woche**).
-        * Fächer: Berufskenntnisse (Informatik-Module), Allgemeinbildung, Sport.
+        * Fächer: Berufskenntnisse (Informatik-Module), Allgemeinbildung, Sport, Englisch und Math.
     * **Berufsmaturität (BMS):** Möglichkeit, die BMS parallel zur Lehre zu absolvieren (Tertiärstufe B), um später direkt an eine Fachhochschule zu gehen.
     * **Qualifikationsverfahren (QV) / Lehrabschlussprüfung:**
         * **Individuelle Praktische Arbeit (IPA):** Eine grössere, selbstständige Arbeit im 4. Lehrjahr.
