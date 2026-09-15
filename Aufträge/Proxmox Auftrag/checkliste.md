@@ -3,5 +3,5 @@
 2.	USB-Stick mit Proxmox-Image erstellen/bereitstellen.	☐
 3.	Laptop (für WebGUI-Zugriff) bereitstellen.	☐
 4.	Sicherstellen, dass die IP-Adresse 172.18.68.38 für den Proxmox-PC frei ist.	☐
-5.	SSH-Verbindung zum Docker VM vorbereiten/kenntnis von nötigem Tool.	☐
-6.	Ubuntu-Image (ubuntu-server-image-xxx.iso) auf dem USB-Stick bereitstellen.	☐	☐
+5.	SSH-Verbindung zum Docker VM vorbereiten/kenntnis von nötigem Tool (Command: ssh benutzername@server_ip) ☐
+7.	Ubuntu-Image (ubuntu-server-image-xxx.iso) auf dem USB-Stick bereitstellen.	☐	☐
