@@ -6,7 +6,7 @@
 - Ablauf der Ausbildung erklären
 - Erklärung Helpdesk und Zeiterfassung
 - Auftrag: Proxmox, Docker & Paperless
-- Erklärung interne Dienste
+- Erklärung interne Dienste (PDQ, PRTG, DHCP, DNS, VNC, Teamwiever, CMI, Snipeit, Printserver, Google Center, Microsoft 365 Center, Active Directory, Netbox, Unifi Network, Synology Nas Drive.
 - Erklärung MDM Filewave
 - Arbeit an echten Tickets (nach Möglichkeit)
 - Auftrag Website
