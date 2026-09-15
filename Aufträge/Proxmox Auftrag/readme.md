@@ -48,9 +48,11 @@ Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die T
         
     -   Klicke dann auf **"Next"**.
         
-5.  **Passwort und E-Mail:**
-    
+5.  **Passwort/Benuzername und E-Mail:**
+
     -   Setze als Passwort **"Welcome.2024"**.
+  
+    -   Der Benutzername den du bei proxmox später eingeben musst ist **"root".**
         
     -   Wiederhole das Passwort bei **"Confirm Password"**.
         
