@@ -227,6 +227,8 @@ Die Installation startet. Das kann einen Moment dauern.
 
 ## 3. Installation von Docker und Portainer
 
+Gehe nun in die WM Konsole und suche die **IP Adresse** heraus, halte sie bereit und konsultiere deinen zuständige Aufsichtsperson. Er wird nun dein Laptop mit der WM per SSH Verbinden.
+
 **Docker** ist ein Werkzeug, mit dem man Software in isolierten Umgebungen (genannt **Container**) betreiben kann. **Portainer** ist eine Weboberfläche, um diese Container grafisch zu verwalten.
 
 ### Installation von Docker auf der VM
