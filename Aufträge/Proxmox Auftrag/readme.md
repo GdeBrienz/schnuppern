@@ -134,7 +134,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
 
 ### Erstellung der VM
 
-1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).
+1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).y
     
 
 **Bereich** | **Einstellung**       | **Erklärung**  
@@ -149,7 +149,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
 **Network** | Alles belassen (Standard) | Standard-Netzwerkverbindung.
 **Confirm** | **Start after created:** Ankreuzen | Die VM soll nach der Erstellung sofort starten.
 
-2.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet.
+2.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet, warte ein paar Minuten.
     
 
 ### Installation von Ubuntu Server auf der VM
@@ -160,36 +160,36 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
     
 2.  Klicke auf **"Console"**. Du siehst nun den virtuellen Bildschirm deiner VM.
     
+3.  Klicke auf **"Try or Install"**.
+
 
 **Folge nun den Installationsschritten:**
 
 1.  **Sprache:** Wähle **"English"**.
+        
+2.  Bei den nächsten Schritten belässt du alles so, wie es ist, und klickst auf **"Done"**.
     
-2.  Wähle **"Continue without updating"**.
+3.  Stelle sicher, dass **"Ubuntu Server"** oben angekreuzt ist, dann **"Done"**.
     
-3.  Bei den nächsten Schritten belässt du alles so, wie es ist, und klickst auf **"Done"**.
-    
-4.  Stelle sicher, dass **"Ubuntu Server"** oben angekreuzt ist, dann **"Done"**.
-    
-5.  **Netzwerkeinstellungen:** Belasse alles beim Standard.
+4.  **Netzwerkeinstellungen:** Belasse alles beim Standard.
     
     > Wichtig 📌
     > 
     > Schreibe dir die angezeigte IP-Adresse der VM (z. B. 172.18.68.x) unbedingt auf! Du wirst sie später brauchen, um auf die VM zuzugreifen.
     
-6.  Klicke **"Done"**.
+5.  Klicke **"Done"**.
     
-7.  **Proxy und Mirror:** Belasse alles beim Standard und klicke jeweils **"Done"** und dann **"Continue"**.
+6.  **Proxy und Mirror:** Belasse alles beim Standard und klicke jeweils **"Done"** und dann **"Continue"**.
     
-8.  **Guided storage configuration:** Navigiere mit der Pfeiltaste nach unten, bis die Option **"Done"** grün markiert ist. Drücke Enter.
+7.  **Guided storage configuration:** Navigiere mit der Pfeiltaste nach unten, bis die Option **"Done"** grün markiert ist. Drücke Enter.
     
-9.  **Storage Configuration:** Klicke **"Done"**.
+8.  **Storage Configuration:** Klicke **"Done"**.
     
-10.  Klicke **"Continue"**.
+9.  Klicke **"Continue"**.
     
-11.  **Benutzerangaben konfigurieren:**
+10.  **Benutzerangaben konfigurieren:**
     
-    -   **Your name:** Gib deinen Namen ein.
+    -   **Your name:** Gib deinen Vornamen ein.
     -   **Server name:** docker
     -   **Username:** sysadmin
     -   **Passwort:** Welcome.2024
@@ -197,15 +197,15 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
         
     Hinweis: Achte darauf, dass du das Tastatur-Layout richtig beachtest. Eventuell sind Y und Z vertauscht.
     
-12.  Klicke **"Done"**.
+11.  Klicke **"Done"**.
     
-13.  **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
+12.  **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
     
-14.  **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
+13.  **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
     
-15.  Navigiere zu **"Done"**.
+14.  Navigiere zu **"Done"**.
     
-16.  **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
+15.  **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
     
 
 Die Installation startet. Das kann einen Moment dauern.
@@ -229,13 +229,31 @@ Die Installation startet. Das kann einen Moment dauern.
 
 ## 3. Installation von Docker und Portainer
 
-Gehe nun in die WM Konsole und suche die **IP Adresse** heraus, halte sie bereit und konsultiere deinen zuständige Aufsichtsperson. Er wird nun dein Laptop mit der WM (Docker) per SSH Verbinden.
+Gehe nun in die WM Konsole und suche die **IP Adresse** der VM die du erstellt hast heraus, halte sie bereit und konsultiere deine zuständige Aufsichtsperson. Er wird nun dein Laptop mit der WM (Docker) per SSH Verbinden.
 
 **Docker** ist ein Werkzeug, mit dem man Software in isolierten Umgebungen (genannt **Container**) betreiben kann. **Portainer** ist eine Weboberfläche, um diese Container grafisch zu verwalten.
 
 ### Installation von Docker auf der VM
 
 Kopiere die folgenden Befehle in dein Terminal (SSH-Verbindung zum Docker Server) und führe sie nacheinander aus. Mit diesen Befehlen wird das System aktualisiert und die offizielle Docker-Software-Quelle hinzugefügt.
+
+```
+
+SSH Verbindung: ssh sysadmin@"ipadresse" z.b (ssh sysadmin@172.18.68.40)
+Wenn iP Adresse von VM gleicht ist wie die von Proxmox Server dann muss man auf der VM eine neue iP Adresse anfordern.
+
+Befehle:
+- ip adresse nachschauen: = ip addr
+- sudo ip addr flush dev eth0: = removes all IPs from eth0 (chose your own interface).
+- sudo dhclient eth0: = requests a new IP from the DHCP server (chose your own interface).
+- Reboot
+- If its not working after these Steps try to search a Solution
+
+```
+
+Bei der Abfrage die auftauchen wird **"yes"** eingeben.
+
+
 
 Wir aktualisieren die Liste der verfügbaren neuen Software-Pakete.
 
@@ -277,6 +295,7 @@ sudo apt update
 
 Wir installieren die Hauptkomponenten von Docker auf deinem Server.
 
+Bei der Abfrage **"Yes"** drücken.
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
