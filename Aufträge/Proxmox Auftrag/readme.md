@@ -36,13 +36,15 @@ Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die T
 
 1.  Sobald der Proxmox-Installer gestartet ist, wähle **"Install Proxmox VE (Graphical)"** aus.
     
-2.  Akzeptiere die Lizenzvereinbarung (EULA) mit **"I agree"**.
+2.  Akzeptiere die Lizenzvereinbarung (EULA) mit **"I agree"**(unten rechts).
     
 3.  Im nächsten Fenster klickst du unten einfach auf **"Next"**.
     
 4.  **Standort und Zeitzone:**
     
     -   Wähle bei **"Country"** (Land) **"Switzerland"** (Schweiz) aus.
+  
+    -   Wähle bei **"Time zone"** (Zeitzone) **"Europe/Zürich"** aus.
         
     -   Wähle beim **Tastatur-Layout** **"Swiss-German"** aus.
         
@@ -71,11 +73,11 @@ Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die T
     -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
         
     -   Klicke dann auf **"Next"**.
-        
-6.  Bestätige die Installation, indem du auf **"Install"** klickst.
-    
-7.  Die Installation dauert einen Moment. Wenn sie abgeschlossen ist, klicke auf **"Reboot"** (Neustart).
-    
+
+
+6.  Du siehst nun ein kleines Kästchen drücke das damit der PC nach der installation **"Rebooted"** (Neustart), die Installation dauert nun einen Moment.
+
+7.  Bestätige die Installation, indem du auf **"Install"** klickst.    
 
 **Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
 
@@ -89,7 +91,7 @@ Eine **VM** ist ein vollständiger, eigenständiger virtueller Computer, der inn
 
 Der Proxmox-Server läuft nun auf dem PC neben dir. Wir greifen nun von deinem Laptop aus über das Netzwerk darauf zu. 
 
-1.  **Notiere dir die Adresse:** Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel **"[https://172.18.68.42:8006](https://www.google.com/url?sa=E&source=gmail&q=https://172.18.68.42:8006)"**.
+1.  **Notiere dir die Adresse:** (Du kannst die App **"Notizen/Notes"** aufrufen und das dort aufschreiben). Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel **"[https://172.18.68.42:8006](https://www.google.com/url?sa=E&source=gmail&q=https://172.18.68.42:8006)"**.
 
 2.  Melde dich bei deinem Betreuer, damit wir den Monitor umstellen können.
 
@@ -115,7 +117,7 @@ Du bist nun auf der Weboberfläche (WebGUI) von Proxmox. Schau dich gerne ein we
 
 Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdatei) für das Betriebssystem der VM. Wir verwenden **Ubuntu Server** (ein Linux-Betriebssystem).
 
-1.  Klicke dich links durch die Baumstruktur: **Datacenter** > den Namen deines Nodes (z. B. **pve**).
+1.  Klicke dich links durch die Baumstruktur: **Datacenter > Proxmox** > den Namen deines Nodes (z. B. **pve**).
     
 2.  Klicke auf **`local (pve)`**.
     
