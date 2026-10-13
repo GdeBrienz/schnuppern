@@ -404,12 +404,12 @@ Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), u
 3. Nun Wichtig! Man braucht immer einen neuen Secret Key, du musst somit einen erstellen und das JEDES MAL!!.
 
 ```
-
 Um einen Secret Key zu generieren, bitte folgendes eingeben: python3 -c "import secrets; print(secrets.token_urlsafe(64))"
 
 Warning!!
 This setting has no default value. You must set it before starting Paperless. Existing installations that relied on the previous default value should set PAPERLESS_SECRET_KEY to that value to avoid invalidating existing sessions and tokens.
 
+Füge nun bei dem ganzen Text bei "PAPERLESS_SECRET_KEY:" deinen selbst generieren KEY ein.
 ```
 
 4. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
