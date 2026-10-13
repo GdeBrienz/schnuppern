@@ -355,10 +355,22 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker Server zug
     -   Erstelle einen neuen Benutzer mit dem Benutzernamen **`admin`**.
         
     -   Wähle das Passwort **`Welcome.2024`**.
-        
+          
+    -   Gib beim Setup Token **`local`** ein.
+
     -   Klicke auf **"Create user"**.
-        
-5.  Klicke auf **"Get Started"** und dann auf die Umgebung **`local`**.
+  
+    -   Falls hier ein Fehlercode erscheint (403), dann konsultiere bitte deinen zuständigen Mitarbeiter.
+  
+    ```
+
+    Sitzung ist abgelaufen, du musst den Setup Token suchen und folgenden Befehl eingeben: "docker logs portainer".
+    Du siehst dann einen Bereich bei dem folgendes steht: setup_token=(Dein Setup Token, z.b setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5).
+    Kopiere diesen Setup Token in das Feld des Portainers und clicke auf Create User.
+    
+    ```
+     
+6.  Klicke auf **"Get Started"** und dann auf die Umgebung **`local`**.
     
 
 Du bist nun auf der Oberfläche von Portainer.
