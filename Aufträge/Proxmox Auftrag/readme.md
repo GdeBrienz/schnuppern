@@ -485,3 +485,5 @@ Du siehst nun die Oberfläche von Paperless.
     
 
 Unter **"Documents"** in Paperless siehst du nun dein erstes hochgeladenes Dokument. **Herzlichen Glückwunsch!** Du hast erfolgreich eine VM erstellt und darauf einen Dienst in einem Docker-Container bereitgestellt.
+
+Du bist nun fertig, du hast diesen Auftrag erfolgreich abgeschlossen. Konsultiere nun deinen Mitarbeiter und zeig ihm, wie gut du deine Aufgabe gemeistert hast.
