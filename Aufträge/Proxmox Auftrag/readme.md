@@ -401,11 +401,22 @@ Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), u
 
 2. Klicke auf den Button "Raw". Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
 
-3. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
+3. Nun Wichtig! Man braucht immer einen neuen Secret Key, du musst somit einen erstellen und das JEDES MAL!!.
 
-4. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (<kbd>Strg + V</kbd>).
+```
 
-5. Klicke ganz unten auf "Deploy the Stack".
+Um einen Secret Key zu generieren, bitte folgendes eingeben: python3 -c "import secrets; print(secrets.token_urlsafe(64))"
+
+Warning!!
+This setting has no default value. You must set it before starting Paperless. Existing installations that relied on the previous default value should set PAPERLESS_SECRET_KEY to that value to avoid invalidating existing sessions and tokens.
+
+```
+
+4. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
+
+5. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (<kbd>Strg + V</kbd>).
+
+6. Klicke ganz unten auf "Deploy the Stack".
 
 Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet. Die Bereitstellung (Deployment) der einzelnen Container dauert einen Moment.
 
