@@ -15,7 +15,6 @@ services:
       POSTGRES_PASSWORD: paperless
   webserver:
     image: ghcr.io/paperless-ngx/paperless-ngx:latest
-    restart: unless-stopped
     depends_on:
       - db
       - broker
@@ -29,6 +28,7 @@ services:
     environment:
       PAPERLESS_REDIS: redis://broker:6379
       PAPERLESS_DBHOST: db
+      PAPERLESS_SECRET_KEY: (Your_Secret_Key)
 volumes:
   data:
   media:
