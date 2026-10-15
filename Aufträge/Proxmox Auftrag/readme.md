@@ -134,7 +134,7 @@ Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdate
 
 ### Erstellung der VM
 
-1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).y
+1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).
     
 
 **Bereich** | **Einstellung**       | **Erklärung**  
@@ -356,19 +356,19 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker Server zug
         
     -   Wähle das Passwort **`Welcome.2024`**.
           
-    -   Gib beim Setup Token **`local`** ein.
-
-    -   Klicke auf **"Create user"**.
-  
-    -   Falls hier ein Fehlercode erscheint (403), dann konsultiere bitte deinen zuständigen Mitarbeiter.
-  
-    ```
+    -   Beim Setup Token kannst du gerne den zuständigen Mitarbeiter kontaktieren.
+        
+     ```
 
     Sitzung ist abgelaufen, du musst den Setup Token suchen und folgenden Befehl eingeben: "docker logs portainer".
     Du siehst dann einen Bereich bei dem folgendes steht: setup_token=(Dein Setup Token, z.b setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5).
     Kopiere diesen Setup Token in das Feld des Portainers und clicke auf Create User.
     
     ```
+
+    -   Füge nun den bei dir ausgegebenen setup_token in das Feld ein.
+
+    -   Klicke auf **"Create user"**.
      
 6.  Klicke auf **"Get Started"** und dann auf die Umgebung **`local`**.
     
