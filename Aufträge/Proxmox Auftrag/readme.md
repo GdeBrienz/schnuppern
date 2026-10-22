@@ -163,6 +163,7 @@ Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse he
 Melde dich nun mit SSH von deinem Laptop aus an. 
 
 💡 **Kleiner Tipp:** Wenn man in Linux ein Passwort eingibt, werden aus Sicherheitsgründen keine Zeichen oder Sternchen angezeigt. Nur keine Panik, wenn du auf dem Bildschirm nichts siehst – tippe das Passwort einfach blind ein und drücke Enter, es funktioniert trotzdem!
+
 ```ssh sysadmin@<IP-Adresse_der_VM>``` *(Beispiel: ```ssh sysadmin@172.18.68.40```)*
 
 1. Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: `Welcome.2024`.
