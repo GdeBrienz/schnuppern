@@ -276,8 +276,8 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker-Server zug
    * Erstelle einen neuen Benutzer mit dem Benutzernamen `admin`.
    * Wähle das Passwort `Welcome.2024`.
    * Wenn die Sitzung abgelaufen ist oder ein Setup-Token gefordert wird, gib in deiner SSH-Konsole die du beim vorherigen Schritt erstellt hast folgenden Befehl ein:
-     ```
-     sudo docker logs portainer
+     ```bash
+         sudo docker logs portainer
      ```
    * Suche in der Ausgabe nach dem Eintrag `setup_token=` (z. B. `setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5`).
    * Kopiere diesen Token in das entsprechende Feld in Portainer.
@@ -324,7 +324,7 @@ Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container e
 3. Klicke auf das Konsolen-Symbol oder den Tab **"Console"** und dann auf **"Connect"**.
 4. Gib folgenden Befehl ein:
    ```bash
-   python3 manage.py createsuperuser
+      python3 manage.py createsuperuser
    ```
 5. **Benutzer-Details:**
    * **Username:** `admin`
