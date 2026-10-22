@@ -1,39 +1,34 @@
 ## 3. Installation von Docker und Portainer
 
-SSH Verbindung: ssh sysadmin@"ipadresse" z.b (ssh sysadmin@172.18.68.40)
-Wenn iP Adresse von VM gleicht ist wie die von Proxmox Server dann muss man auf der VM eine neue iP Adresse anfordern.
+### SSH-Verbindung herstellen
+* **Befehl:** `ssh sysadmin@172.18.68.x` *(Beispiel für deine IP-Adresse)*
+* **Wichtig:** Falls die IP-Adresse deiner VM zufällig genau gleich ist wie die des Proxmox-Servers, musst du auf der VM eine neue IP-Adresse anfordern.
+* Bestätige die Sicherheitsabfrage beim ersten Verbindungsaufbau mit **`yes`**.
 
-- Bei der Abfrage die auftauchen wird **"yes"** eingeben.
+> 💡 **Hilfreiche Befehle bei IP-Konflikten:**
+> * IP-Adresse nachschauen: `ip addr`
+> * Alle IPs vom Interface entfernen: `sudo ip addr flush dev eth0` *(wähle dein eigenes Interface)*
+> * Neue IP anfordern: `sudo dhclient eth0`
+> * Neustart: `sudo reboot`
 
-```
-Befehle als Hilfestellung:
-- ip adresse nachschauen: = ip addr
-- sudo ip addr flush dev eth0: = removes all IPs from eth0 (chose your own interface).
-- sudo dhclient eth0: = requests a new IP from the DHCP server (chose your own interface).
-- Reboot
-```
+---
 
-**Erklärungen der Begriffe**
-- **SSH Verbindung** Eine verschlüsselte Netzwerkverbindung, mit der du dich sicher von deinem Computer aus auf einem entfernten Rechner oder Server einloggen und diesen über die Kommandozeile steuern kannstgeräten.
-- **Docker** ist ein Werkzeug, mit dem man Software in isolierten Umgebungen (genannt **Container**) betreiben kann. 
-- **Portainer** ist eine Weboberfläche, um diese Container grafisch zu verwalten.
--   `docker run`: Starte einen neuen Container.
--   `-d`: Im Hintergrund (detached) ausführen.
--   `-p 9443:9443`: Der Container-Port **9443** wird auf den Server-Port **9443** umgeleitet.
--   `--name portainer`: Der Container bekommt den Namen `portainer`.
+### Begriffserklärungen
+* **SSH-Verbindung:** Eine verschlüsselte Netzwerkverbindung, mit der du dich sicher von deinem Computer aus auf einem entfernten Rechner oder Server einloggen und diesen über die Kommandozeile steuern kannst.
+* **Docker:** Ein Werkzeug, mit dem Software in isolierten Umgebungen (genannt **Container**) betrieben werden kann.
+* **Portainer:** Eine grafische Weboberfläche, um diese Container grafisch zu verwalten.
+* **`docker run`:** Startet einen neuen Container.
+* **`-d`:** Führt den Container im Hintergrund aus (*detached*).
+* **`-p 9443:9443`:** Leitet den Container-Port `9443` auf den Server-Port `9443` um.
+* **`--name portainer`:** Gibt dem Container den festen Namen `portainer`.
 
+---
 
-### Installation von Portainer
+### Installation von Portainer & Secret Key
 
-Secret Key Erklärung
+Um Paperless sicher zu betreiben, wird ein sogenannter **Secret Key** benötigt. 
 
-Um einen Secret Key zu generieren, bitte folgendes eingeben: 
-```
+#### Secret Key generieren
+Führe folgenden Befehl in deinem Terminal aus, um einen neuen Key zu erstellen:
+```bash
 python3 -c "import secrets; print(secrets.token_urlsafe(64))"
-```
-Warning!!
-This setting has no default value. You must set it before starting Paperless. Existing installations that relied on the previous default value should set PAPERLESS_SECRET_KEY to that value to avoid invalidating existing sessions and tokens.
-
-Füge nun bei dem ganzen Text bei "PAPERLESS_SECRET_KEY:" deinen selbst generieren KEY ein.
-Somit hast du deinen "PAPERLESS_SECRET_KEY". Suche nun den Abschnitt wo der Secret Key hinein kommt.
-
