@@ -1,4 +1,3 @@
-
 # Schnupperlehre: Informatiker EFZ Plattformentwicklung 🧑‍💻
 
 ## Auftrag: Grundlagen für moderne IT-Dienste schaffen
@@ -8,13 +7,10 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
 > **Was du lernen wirst:** Du lernst die Grundlagen der **Virtualisierung** kennen. Das ist eine Schlüsseltechnologie in der heutigen IT, die es erlaubt, mehrere voneinander unabhängige Computersysteme auf nur einem physischen PC zu betreiben.
 
 **Hilfsmittel:**
+* Internet
+* Mitarbeiter (dein Betreuer)
 
--   Internet
-    
--   Mitarbeiter (dein Betreuer)
-    
-
-----------
+---
 
 ## 1. Installation von Proxmox VE (Virtual Environment)
 
@@ -22,62 +18,37 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
 
 ### Vorbereitung des PCs
 
-1.  Nimm den bereitgestellten **USB-Stick** und stecke ihn in einen freien USB-Anschluss des PCs.
-    
-2.  **Starte den PC** neu. Der PC wird nun vom USB-Stick booten (starten).  
-Wichtig 🚨 Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die Taste F12 drücken. Damit gelangst du ins Boot-Menü und kannst den USB-Stick als Startmedium auswählen.
-    
+1. Nimm den bereitgestellten **USB-Stick** und stecke ihn in einen freien USB-Anschluss des PCs.
+2. **Starte den PC** neu. Der PC wird nun vom USB-Stick booten (starten).  
+   > 🚨 **Wichtig:** Um vom USB-Stick zu starten, musst du beim Hochfahren des PCs die Taste `F12` drücken. Damit gelangst du ins Boot-Menü und kannst den USB-Stick als Startmedium auswählen.
 
-> INFO 💡
-> 
-> Auf dem USB-Stick befindet sich ein Proxmox-Image. Das ist eine Installationsdatei, wie du sie vielleicht von der Installation eines normalen Betriebssystems wie z.B. Windows kennst.
+> 💡 **INFO:** Auf dem USB-Stick befindet sich ein Proxmox-Image. Das ist eine Installationsdatei, wie du sie vielleicht von der Installation eines normalen Betriebssystems wie z. B. Windows kennst.
 
 ### Der Installationsprozess
 
-1.  Sobald der Proxmox-Installer gestartet ist, wähle **"Install Proxmox VE (Graphical)"** aus.
-    
-2.  Akzeptiere die Lizenzvereinbarung (EULA) mit **"I agree"**(unten rechts).
-    
-3.  Im nächsten Fenster klickst du unten einfach auf **"Next"**.
-    
-4.  **Standort und Zeitzone:**
-    
-    -   Wähle bei **"Country"** (Land) **"Switzerland"** (Schweiz) aus.
-  
-    -   Wähle bei **"Time zone"** (Zeitzone) **"Europe/Zürich"** aus.
-        
-    -   Wähle beim **Tastatur-Layout** **"Swiss-German"** aus.
-        
-    -   Klicke dann auf **"Next"**.
-        
-5.  **Passwort/Benuzername und E-Mail:**
+1. Sobald der Proxmox-Installer gestartet ist, wähle **"Install Proxmox VE (Graphical)"** aus.
+2. Akzeptiere die Lizenzvereinbarung (EULA) mit **"I agree"** (unten rechts).
+3. Im nächsten Fenster klickst du unten einfach auf **"Next"**.
+4. **Standort und Zeitzone:**
+   * Wähle bei **"Country"** (Land) **"Switzerland"** (Schweiz) aus.
+   * Wähle bei **"Time zone"** (Zeitzone) **"Europe/Zurich"** aus.
+   * Wähle beim **Tastatur-Layout** **"Swiss-German"** aus.
+   * Klicke dann auf **"Next"**.
+5. **Passwort/Benutzername und E-Mail:**
+   * Setze als Passwort **"Welcome.2024"**.
+   * Der Benutzername, den du bei Proxmox später eingeben musst, ist **"root"**.
+   * Wiederhole das Passwort bei **"Confirm Password"**.
+   * Gib bei der E-Mail-Adresse **"schnuppernbrienz@gmail.com"** ein.
+   * Klicke auf **"Next"**.
 
-    -   Setze als Passwort **"Welcome.2024"**.
-  
-    -   Der Benutzername den du bei proxmox später eingeben musst ist **"root".**
-        
-    -   Wiederhole das Passwort bei **"Confirm Password"**.
-        
-    -   Gib bei der E-Mail-Adresse **"schnuppernbrienz@gmail.com"** ein.
-        
-    -   Klicke auf **"Next"**.
-        
+> 🚨 **Wichtig:** Im Rahmen dieser Übung verwenden wir aus Einfachheitsgründen überall das gleiche, relativ einfache Passwort. In einem produktiven (echt genutzten) System musst du aber immer sichere und unterschiedliche Passwörter verwenden!
 
-> Wichtig 🚨
-> 
-> Im Rahmen dieser Übung verwenden wir aus Einfachheitsgründen überall das gleiche, relativ einfache Passwort. In einem produktiven (echt genutzten) System musst du aber immer sichere und unterschiedliche Passwörter verwenden!
-
-6.  **Netzwerkkonfiguration:**
-    -   Gib bei **"Host Name** den Namen **"Proxmox.Brienz.local"** ein.
-
-    -   Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
-        
-    -   Klicke dann auf **"Next"**.
-
-
-6.  Du siehst nun ein kleines Kästchen drücke das damit der PC nach der installation **"Rebooted"** (Neustart), die Installation dauert nun einen Moment.
-
-7.  Bestätige die Installation, indem du auf **"Install"** klickst.    
+6. **Netzwerkkonfiguration:**
+   * Gib bei **"Host Name"** den Namen **"Proxmox.Brienz.local"** ein.
+   * Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
+   * Klicke dann auf **"Next"**.
+7. Setze das Häkchen bei der Option für den automatischen Neustart nach der Installation (**"Reboot"**). 
+8. Bestätige die Installation, indem du auf **"Install"** klickst. Die Installation dauert nun einen Moment.
 
 **Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
 
