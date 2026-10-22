@@ -139,7 +139,7 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
 14. Navigiere zu **"Done"**.
 15. **Featured Server Snaps:** Wähle keine an. Klicke auf **"Done"**.
 
-Die Installation startet. Das kann einen Moment dauern.
+Die Installation startet. Das kann einen Moment dauern, du kannst bereits mit dem nächsten Schritt weitermachen.
 
 ### Abschluss der VM-Installation
 
@@ -155,16 +155,19 @@ Die Installation startet. Das kann einen Moment dauern.
 
 Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit. Melde dich anschliessend per SSH an.
 
-So erstellst du eine SSH-Verbindung:
-ssh sysadmin@<IP-Adresse_der_VM> (Beispiel: ssh sysadmin@172.18.68.40)
+### So erstellst du eine SSH-Verbindung:
+`ssh sysadmin@<IP-Adresse_der_VM>` *(Beispiel: `ssh sysadmin@172.18.68.40`)*
 
-Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: Welcome.2024.
-Beim ersten Verbindungsaufbau erscheint eine Sicherheitsabfrage. Bestätige diese mit yes oder y.
+1. Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: `Welcome.2024`.
+2. Beim ersten Verbindungsaufbau erscheint eine Sicherheitsabfrage. Bestätige diese mit `yes` oder `y`.
+
+> Falls du Hilfe benötigst, wende dich gerne an deinen zuständigen Betreuer.
+
+---
 
 ### Installation von Docker auf der VM
 
-Kopiere die folgenden Befehle in dein Terminal (SSH-Verbindung zum Docker Server) und führe sie nacheinander aus. Mit diesen Befehlen wird das System aktualisiert und die offizielle Docker-Software-Quelle hinzugefügt.
-
+Kopiere die folgenden Befehle in dein Terminal (SSH-Verbindung zum Docker-Server) und führe sie nacheinander aus. Mit diesen Befehlen wird das System aktualisiert und die offizielle Docker-Software-Quelle hinzugefügt.
 Wir aktualisieren die Liste der verfügbaren neuen Software-Pakete.
 
 ```
@@ -253,36 +256,26 @@ Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten
     
 ----------
 
+Markdown
 ## 4. Konfiguration von Portainer
 
-Nun kannst du über das Web-Interface von Portainer auf deinen Docker Server zugreifen.
+Nun kannst du über das Web-Interface von Portainer auf deinen Docker-Server zugreifen.
 
-1.  Öffne ein **neues Browserfenster** auf deinem Laptop.
-    
-2.  Gib die IP-Adresse deiner VM ein, gefolgt von **`:9443`** (dem Port von Portainer):
-    
-    -   Beispiel: `https://172.18.68.x:9443`
-        
-3.  Auch hier erscheint die Sicherheitswarnung, die du mit **"Erweitert"** und **"Weiter zu... (unsicher)"** umgehen kannst.
-    
-4.  **Anmeldung bei Portainer:**
-    
-    -   Erstelle einen neuen Benutzer mit dem Benutzernamen **`admin`**.
-        
-    -   Wähle das Passwort **`Welcome.2024`**.
-          
-    -   Beim Setup Token kannst du gerne den zuständigen Mitarbeiter kontaktieren.
-  
-    -   Sitzung ist abgelaufen, du musst den Setup Token suchen und folgenden Befehl eingeben: "docker logs portainer".
-        Du siehst dann einen Bereich bei dem folgendes steht: setup_token=(Dein Setup Token, z.b setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5).
-        Kopiere diesen Setup Token in das Feld des Portainers und clicke auf Create User.
-        
-    -   Füge nun den bei dir ausgegebenen setup_token in das Feld ein.
-
-    -   Klicke auf **"Create user"**.
-     
-6.  Klicke auf **"Get Started"** und dann auf die Umgebung **`local`**.
-    
+1. Öffne ein **neues Browserfenster** auf deinem Laptop.
+2. Gib die IP-Adresse deiner VM ein, gefolgt von `:9443` (dem Port von Portainer):
+   * Beispiel: `https://172.18.68.x:9443`
+3. Auch hier erscheint die Sicherheitswarnung, die du mit **"Erweitert"** und **"Weiter zu... (unsicher)"** umgehen kannst.
+4. **Anmeldung bei Portainer:**
+   * Erstelle einen neuen Benutzer mit dem Benutzernamen `admin`.
+   * Wähle das Passwort `Welcome.2024`.
+   * Wenn die Sitzung abgelaufen ist oder ein Setup-Token gefordert wird, gib in deiner SSH-Konsole folgenden Befehl ein:
+     ```bash
+     sudo docker logs portainer
+     ```
+   * Suche in der Ausgabe nach dem Eintrag `setup_token=` (z. B. `setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5`).
+   * Kopiere diesen Token in das entsprechende Feld in Portainer.
+   * Klicke auf **"Create user"**.
+5. Klicke auf **"Get Started"** und wähle die Umgebung `local` aus.
 
 Du bist nun auf der Oberfläche von Portainer.
 
