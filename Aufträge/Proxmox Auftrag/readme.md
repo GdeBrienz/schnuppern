@@ -1,4 +1,3 @@
-Markdown
 # Schnupperlehre: Informatiker EFZ Plattformentwicklung 🧑‍💻
 
 ## Auftrag: Grundlagen für moderne IT-Dienste schaffen
@@ -8,8 +7,8 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
 > **Was du lernen wirst:** Du lernst die Grundlagen der **Virtualisierung** kennen. Das ist eine Schlüsseltechnologie in der heutigen IT, die es erlaubt, mehrere voneinander unabhängige Computersysteme auf nur einem physischen PC zu betreiben.
 
 **Hilfsmittel:**
-* Internet
-* Mitarbeiter (dein Betreuer)
+- Internet
+- Mitarbeiter (dein Betreuer)
 
 ---
 
@@ -49,7 +48,7 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
    * Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
    * *Hinweis zu Gateway und DNS:* Übernehme hier die vom lokalen Netzwerk vorgegebenen Standardwerte, die vom Betreuer bereitgestellt werden, damit die Netzwerkanbindung funktioniert.
    * Klicke dann auf **"Next"**.
-7. Setze das Häkchen bei der Option für den automatischen Neustart nach der Installation (**"Reboot"**). 
+7. Setze das Häkchen bei der Option für den automatischen Neustart nach der Installation (**"Reboot"**).  
 8. Bestätige die Installation, indem du auf **"Install"** klickst. Die Installation dauert nun einen Moment.
 
 **Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
@@ -62,12 +61,12 @@ Eine **VM** ist ein vollständiger, eigenständiger virtueller Computer, der inn
 
 ### Zugriff auf das Proxmox Web-Interface
 
-Der Proxmox-Server läuft nun auf dem PC neben dir. Wir greifen nun von deinem Laptop aus über das Netzwerk darauf zu. 
+Der Proxmox-Server läuft nun auf dem PC neben dir. Wir greifen nun von deinem Laptop aus über das Netzwerk darauf zu.  
 
-1. **Notiere dir die Adresse:** (Du kannst die App **"Notizen/Notes"** aufrufen und sie dort aufschreiben). Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel `https://172.18.68.42:8006`.
+1. **Notiere dir die Adresse:** (Du kannst die App **"Notizen/Notes"** aufrufen und sie dort aufschreiben). Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel `https://172.18.68.x:8006`.
 2. Melde dich bei deinem Betreuer, damit ihr gemeinsam den Monitor umstellen könnt.
 3. **Öffne den Browser** (Google Chrome) auf deinem Laptop.
-4. Gib die aufgeschriebene Adresse (z. B. `https://172.18.68.42:8006`) oben in die Adresszeile ein und drücke `Enter`. Du greifst nun über das Netzwerk auf deinen Proxmox-Server zu.
+4. Gib die aufgeschriebene Adresse (z. B. `https://172.18.68.x:8006`) oben in die Adresszeile ein und drücke `Enter`. Du greifst nun über das Netzwerk auf deinen Proxmox-Server zu.
 
 > 💡 **INFO: Sicherheitswarnung**  
 > Es erscheint die Meldung *"Dies ist keine sichere Verbindung"*. Das ist normal, da Proxmox ein eigenes, lokales Sicherheitszertifikat verwendet. Da wir uns in unserem internen Übungsnetz befinden und keine heiklen Daten austauschen, kannst du diese Warnung hier ignorieren. Klicke auf **"Erweitert"** und dann auf den Link **"Weiter zu ... (unsicher)"**. Im normalen Internet solltest du solche Warnungen aber immer ernst nehmen!
@@ -141,7 +140,7 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
 14. Navigiere zu **"Done"**.
 15. **Featured Server Snaps:** Wähle keine an. Klicke auf **"Done"**.
 
-Die Installation startet. Das kann einen Moment dauern.
+Die Installation startet. Das kann einen Moment dauern, währenddessen kannst du gerne bereits weitere Schritte bearbeiten.
 
 ### Abschluss der VM-Installation
 
@@ -149,7 +148,7 @@ Die Installation startet. Das kann einen Moment dauern.
 2. Klicke dort doppelt auf **"CD/DVD Drive"** und wähle die Option **"Do not use any media"** aus (alternativ reicht es oft, nach dem Neustart-Befehl einmal `Enter` zu drücken, falls die Meldung zum Entfernen des Mediums erscheint).
 3. Gehe zurück zu **"Console"**.
 4. Starte die VM neu mit **"Reboot Now"**.
-    
+  
 ----------
 
 ## 3. Installation von Docker und Portainer
@@ -164,7 +163,7 @@ Melde dich nun mit SSH von deinem Laptop aus an.
 
 💡 **Kleiner Tipp:** Wenn man in Linux ein Passwort eingibt, werden aus Sicherheitsgründen keine Zeichen oder Sternchen angezeigt. Nur keine Panik, wenn du auf dem Bildschirm nichts siehst – tippe das Passwort einfach blind ein und drücke Enter, es funktioniert trotzdem!
 
-```ssh sysadmin@<IP-Adresse_der_VM>``` *(Beispiel: ```ssh sysadmin@172.18.68.40```)*
+```ssh sysadmin@<IP-Adresse_der_VM>``` *(Beispiel: ```ssh sysadmin@172.18.68.x```)*
 
 1. Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: `Welcome.2024`.
 2. Beim ersten Verbindungsaufbau erscheint eine Sicherheitsabfrage. Bestätige diese mit `yes` oder `y`.
