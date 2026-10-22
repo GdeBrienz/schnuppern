@@ -208,7 +208,7 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
 15.  **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
     
 
-Die Installation startet. Das kann einen Moment dauern.
+Die Installation startet. Das kann einen Moment dauern, währenddessen kannst du ruhig bereits mit dem unteren Schritt weiterfahren.
 
 ### Abschluss der VM-Installation
 
@@ -222,38 +222,21 @@ Die Installation startet. Das kann einen Moment dauern.
     
 5.  Starte die VM neu mit **"Reboot Now"**.
     
-
-**Nun konsultiere mich bitte kurz. Wir werden uns jetzt vom Laptop per SSH (einem sicheren Netzwerkprotokoll) mit der VM (Docker) verbinden.**
-
 ----------
 
 ## 3. Installation von Docker und Portainer
 
-Gehe nun in die WM Konsole und suche die **IP Adresse** der VM die du erstellt hast heraus, halte sie bereit und konsultiere deine zuständige Aufsichtsperson. Er wird nun dein Laptop mit der WM (Docker) per SSH Verbinden.
+Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit. Melde dich anschliessend per SSH an.
 
-**Docker** ist ein Werkzeug, mit dem man Software in isolierten Umgebungen (genannt **Container**) betreiben kann. **Portainer** ist eine Weboberfläche, um diese Container grafisch zu verwalten.
+So erstellst du eine SSH-Verbindung:
+ssh sysadmin@<IP-Adresse_der_VM> (Beispiel: ssh sysadmin@172.18.68.40)
+
+Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: Welcome.2024.
+Beim ersten Verbindungsaufbau erscheint eine Sicherheitsabfrage. Bestätige diese mit yes oder y.
 
 ### Installation von Docker auf der VM
 
 Kopiere die folgenden Befehle in dein Terminal (SSH-Verbindung zum Docker Server) und führe sie nacheinander aus. Mit diesen Befehlen wird das System aktualisiert und die offizielle Docker-Software-Quelle hinzugefügt.
-
-```
-
-SSH Verbindung: ssh sysadmin@"ipadresse" z.b (ssh sysadmin@172.18.68.40)
-Wenn iP Adresse von VM gleicht ist wie die von Proxmox Server dann muss man auf der VM eine neue iP Adresse anfordern.
-
-Befehle:
-- ip adresse nachschauen: = ip addr
-- sudo ip addr flush dev eth0: = removes all IPs from eth0 (chose your own interface).
-- sudo dhclient eth0: = requests a new IP from the DHCP server (chose your own interface).
-- Reboot
-- If its not working after these Steps try to search a Solution
-
-```
-
-Bei der Abfrage die auftauchen wird **"yes"** eingeben.
-
-
 
 Wir aktualisieren die Liste der verfügbaren neuen Software-Pakete.
 
@@ -274,11 +257,13 @@ sudo mkdir -p /etc/apt/keyrings
 ```
 
 Wir laden den offiziellen Sicherheitsschlüssel von Docker herunter und speichern ihn im neuen Ordner, um sicherzustellen, dass wir nur echte Docker-Software installieren.
+
 ```
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 ```
 
 Wir fügen die offizielle Docker-Webadresse als neue Software-Quelle zu deinem System hinzu.
+
 ```
 echo \
   "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
@@ -291,18 +276,19 @@ Wir aktualisieren die Software-Liste ein zweites Mal, um die neue Docker-Quelle 
 sudo apt update
 ```
 
-**Jetzt wird Docker installiert:**
+**Jetzt wird der Docker installiert:**
 
 Wir installieren die Hauptkomponenten von Docker auf deinem Server.
 
 Bei der Abfrage **"Yes"** drücken.
+
 ```
 sudo apt install docker-ce docker-ce-cli containerd.io docker-compose-plugin
 ```
 
 **Starte den Docker-Dienst:**
 
-Wir starten den Docker-Dienst jetzt, damit er Container ausführen kann.
+Wir starten den Docker-Dienst jetzt, damit er den Container ausführen kann.
 
 ```
 sudo service docker start
@@ -328,14 +314,16 @@ Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten
     sudo docker run -d -p 9443:9443 --name portainer --restart=always -v /var/run/docker.sock:/var/run/docker.sock -v portainer_data:/data portainer/portainer-ce:latest
     ```
     
-    > **_Erklärung:_**
-    > -   `docker run`: Starte einen neuen Container.
-    > -   `-d`: Im Hintergrund (detached) ausführen.
-    > -   `-p 9443:9443`: Der Container-Port **9443** wird auf den Server-Port **9443** umgeleitet.
-    > -   `--name portainer`: Der Container bekommt den Namen `portainer`.
-    >     
+    > **_Erklärung Begriffe:_**
+        > SSH-Verbindung: Eine verschlüsselte Netzwerkverbindung, mit der du dich sicher von deinem Computer aus auf einem entfernten Rechner oder Server einloggen und diesen über die Kommandozeile steuern kannst.
+        > Docker: Ein Werkzeug, mit dem Software in isolierten Umgebungen (Container) betrieben werden kann.
+        > Portainer: Eine grafische Weboberfläche, um diese Container komfortabel zu verwalten.
+        > - Erklärung der Befehlsparameter:
+        > - docker run: Startet einen neuen Container.
+        > - `-d: Führt den Container im Hintergrund aus (detached).
+        > - `-p 9443:9443: Leitet den Container-Port 9443 auf den Server-Port 9443 um.
+        > - `--name portainer: Gibt dem Container den Namen portainer.
     
-
 ----------
 
 ## 4. Konfiguration von Portainer
@@ -357,15 +345,11 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker Server zug
     -   Wähle das Passwort **`Welcome.2024`**.
           
     -   Beim Setup Token kannst du gerne den zuständigen Mitarbeiter kontaktieren.
+  
+    -   Sitzung ist abgelaufen, du musst den Setup Token suchen und folgenden Befehl eingeben: "docker logs portainer".
+        Du siehst dann einen Bereich bei dem folgendes steht: setup_token=(Dein Setup Token, z.b setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5).
+        Kopiere diesen Setup Token in das Feld des Portainers und clicke auf Create User.
         
-     ```
-
-    Sitzung ist abgelaufen, du musst den Setup Token suchen und folgenden Befehl eingeben: "docker logs portainer".
-    Du siehst dann einen Bereich bei dem folgendes steht: setup_token=(Dein Setup Token, z.b setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5).
-    Kopiere diesen Setup Token in das Feld des Portainers und clicke auf Create User.
-    
-    ```
-
     -   Füge nun den bei dir ausgegebenen setup_token in das Feld ein.
 
     -   Klicke auf **"Create user"**.
@@ -401,16 +385,7 @@ Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), u
 
 2. Klicke auf den Button "Raw". Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
 
-3. Nun Wichtig! Man braucht immer einen neuen Secret Key, du musst somit einen erstellen und das JEDES MAL!!.
-
-```
-Um einen Secret Key zu generieren, bitte folgendes eingeben: python3 -c "import secrets; print(secrets.token_urlsafe(64))"
-
-Warning!!
-This setting has no default value. You must set it before starting Paperless. Existing installations that relied on the previous default value should set PAPERLESS_SECRET_KEY to that value to avoid invalidating existing sessions and tokens.
-
-Füge nun bei dem ganzen Text bei "PAPERLESS_SECRET_KEY:" deinen selbst generieren KEY ein.
-```
+3. Nun Wichtig! Man braucht immer einen neuen Secret Key, du musst somit einen erstellen und das JEDES MAL!!. Konsultiere deinen Mitarbeiter für diesen Schritt, er wird dir den Secret Key einrichten.
 
 4. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
 
