@@ -317,7 +317,6 @@ Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container e
 4. Gib folgenden Befehl ein:
    ```bash
    python3 manage.py createsuperuser
-    
 5. **Benutzer-Details:**
    * **Username:** `admin`
    * **Email address:** Drücke einfach `Enter` (keine E-Mail notwendig).
