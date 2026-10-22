@@ -1,3 +1,4 @@
+Markdown
 # Schnupperlehre: Informatiker EFZ Plattformentwicklung 🧑‍💻
 
 ## Auftrag: Grundlagen für moderne IT-Dienste schaffen
@@ -46,6 +47,7 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
 6. **Netzwerkkonfiguration:**
    * Gib bei **"Host Name"** den Namen **"Proxmox.Brienz.local"** ein.
    * Gib bei **"IP Address (CIDR)"** die Adresse **"172.18.68.42/18"** ein.
+   * *Hinweis zu Gateway und DNS:* Übernehme hier die vom lokalen Netzwerk vorgegebenen Standardwerte, die vom Betreuer bereitgestellt werden, damit die Netzwerkanbindung funktioniert.
    * Klicke dann auf **"Next"**.
 7. Setze das Häkchen bei der Option für den automatischen Neustart nach der Installation (**"Reboot"**). 
 8. Bestätige die Installation, indem du auf **"Install"** klickst. Die Installation dauert nun einen Moment.
@@ -139,15 +141,14 @@ Das Betriebssystem muss nun auf der neuen VM installiert werden.
 14. Navigiere zu **"Done"**.
 15. **Featured Server Snaps:** Wähle keine an. Klicke auf **"Done"**.
 
-Die Installation startet. Das kann einen Moment dauern, du kannst bereits mit dem nächsten Schritt weitermachen.
+Die Installation startet. Das kann einen Moment dauern.
 
 ### Abschluss der VM-Installation
 
 1. Klicke im Menü links unter **"Console"** kurz auf **"Hardware"**.
-2. Klicke dort auf **"CD/DVD Drive"**.
-3. Klicke auf **"Remove"**, um das Installations-Image auszuwerfen.
-4. Gehe zurück zu **"Console"**.
-5. Starte die VM neu mit **"Reboot Now"**.
+2. Klicke dort doppelt auf **"CD/DVD Drive"** und wähle die Option **"Do not use any media"** aus (alternativ reicht es oft, nach dem Neustart-Befehl einmal `Enter` zu drücken, falls die Meldung zum Entfernen des Mediums erscheint).
+3. Gehe zurück zu **"Console"**.
+4. Starte die VM neu mit **"Reboot Now"**.
     
 ----------
 
