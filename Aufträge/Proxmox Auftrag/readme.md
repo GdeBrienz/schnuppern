@@ -52,35 +52,27 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
 
 **Glückwunsch!** Du hast Proxmox erfolgreich auf dem PC installiert.
 
-----------
+---
 
 ## 2. Erstellung einer Virtuellen Maschine (VM)
 
-Eine **VM** ist ein vollständiger, eigenständiger virtueller Computer, der innerhalb von Proxmox läuft. Wir erstellen eine VM, die später unser **Docker Server** sein wird.
+Eine **VM** ist ein vollständiger, eigenständiger virtueller Computer, der innerhalb von Proxmox läuft. Wir erstellen eine VM, die später unser **Docker-Server** sein wird.
 
 ### Zugriff auf das Proxmox Web-Interface
 
 Der Proxmox-Server läuft nun auf dem PC neben dir. Wir greifen nun von deinem Laptop aus über das Netzwerk darauf zu. 
 
-1.  **Notiere dir die Adresse:** (Du kannst die App **"Notizen/Notes"** aufrufen und das dort aufschreiben). Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel **"[https://172.18.68.42:8006](https://www.google.com/url?sa=E&source=gmail&q=https://172.18.68.42:8006)"**.
+1. **Notiere dir die Adresse:** (Du kannst die App **"Notizen/Notes"** aufrufen und sie dort aufschreiben). Auf dem Bildschirm des Proxmox-Servers siehst du nun die Adresse für das Web-Interface. Es ist die IP-Adresse, die du vorhin eingegeben hast, mit einem Port: zum Beispiel `https://172.18.68.42:8006`.
+2. Melde dich bei deinem Betreuer, damit ihr gemeinsam den Monitor umstellen könnt.
+3. **Öffne den Browser** (Google Chrome) auf deinem Laptop.
+4. Gib die aufgeschriebene Adresse (z. B. `https://172.18.68.42:8006`) oben in die Adresszeile ein und drücke `Enter`. Du greifst nun über das Netzwerk auf deinen Proxmox-Server zu.
 
-2.  Melde dich bei deinem Betreuer, damit wir den Monitor umstellen können.
+> 💡 **INFO: Sicherheitswarnung**  
+> Es erscheint die Meldung *"Dies ist keine sichere Verbindung"*. Das ist normal, da Proxmox ein eigenes, lokales Sicherheitszertifikat verwendet. Da wir uns in unserem internen Übungsnetz befinden und keine heiklen Daten austauschen, kannst du diese Warnung hier ignorieren. Klicke auf **"Erweitert"** und dann auf den Link **"Weiter zu ... (unsicher)"**. Im normalen Internet solltest du solche Warnungen aber immer ernst nehmen!
 
-3.  **Öffne den Browser** (Google Chrome) auf deinem Laptop.
-    
-4.  Gib die aufgeschriebene Adresse (z. B. **`https://172.18.68.42:8006`**) oben in das Suchfeld ein und drücke Enter. Du greifst nun über das Netzwerk auf deinen Proxmox Server zu.
-    
-
-> INFO 💡: Sicherheitswarnung
-> 
-> Es erscheint die Meldung "Dies ist keine sichere Verbindung". Das ist normal, da Proxmox ein eigenes, lokales Sicherheitszertifikat verwendet. Da wir uns in unserem internen Übungsnetz befinden und keine heiklen Daten austauschen, kannst du diese Warnung hier ignorieren. Klicke auf "Erweitert" und dann auf den Link "Weiter zu ... (unsicher)". Im normalen Internet solltest du solche Warnungen aber immer ernst nehmen!
-
-4.  **Anmeldung:** Melde dich an mit:
-    
-    -   Benutzername: **`root`**
-        
-    -   Passwort: **`Welcome.2024`**
-        
+5. **Anmeldung:** Melde dich an mit:
+   * Benutzername: `root`
+   * Passwort: `Welcome.2024`
 
 Du bist nun auf der Weboberfläche (WebGUI) von Proxmox. Schau dich gerne ein wenig um.
 
@@ -88,110 +80,74 @@ Du bist nun auf der Weboberfläche (WebGUI) von Proxmox. Schau dich gerne ein we
 
 Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdatei) für das Betriebssystem der VM. Wir verwenden **Ubuntu Server** (ein Linux-Betriebssystem).
 
-1.  Klicke dich links durch die Baumstruktur: **Datacenter > Proxmox** > den Namen deines Nodes (z. B. **pve**).
-    
-2.  Klicke auf **`local (pve)`**.
-    
-3.  Klicke auf den Tab **"ISO Images"**.
-    
-4.  Klicke auf **"Upload"** > **"Select File"**.
-    
-5.  Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle **`ubuntu-XX.XX.X-live-server-amd64.iso`** (die genaue Versionsnummer lassen wir weg) aus.
-    
-6.  Klicke auf **"Öffnen"** und dann auf **"Upload"**.
-    
-7.  Das nun erscheinende kleine Fenster kannst du einfach schliessen.
-    
+1. Klicke dich links durch die Baumstruktur: **Datacenter > Proxmox >** den Namen deines Nodes (z. B. **pve**).
+2. Klicke auf `local (pve)`.
+3. Klicke auf den Tab **"ISO Images"**.
+4. Klicke auf **"Upload"** > **"Select File"**.
+5. Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle `ubuntu-XX.XX.X-live-server-amd64.iso` aus.
+6. Klicke auf **"Öffnen"** und dann auf **"Upload"**.
+7. Das nun erscheinende kleine Fenster kannst du nach Abschluss einfach schliessen.
 
 ### Erstellung der VM
 
-1.  Klicke oben rechts auf **"Create VM"** (VM erstellen).
-    
+1. Klicke oben rechts auf **"Create VM"** (VM erstellen).
 
-**Bereich** | **Einstellung**       | **Erklärung**  
----         | ---                   | ---  
-**General** | **VM ID:** `100`      | Eine eindeutige Nummer für die VM.
-"           | **Name:** `Docker`    | Ein verständlicher Name für die VM.
-**OS** (Betriebssystem) | **ISO-Image:** `ubuntu-XX.XX.X-live-server-amd64.iso` | Wähle das hochgeladene Image aus.
-"           | **Type:** `Linux`     | Das Betriebssystem ist Linux.
-**Disks**   | **Disk Size (GiB):** `100`| Die Festplattengrösse der VM.
-**CPU** (Prozessor) | **Cores:** `8` | Die Anzahl der virtuellen Prozessorkerne, die der VM zur Verfügung stehen.
-**Memory** (Arbeitsspeicher) | **Memory (MiB):** `8192` | Die Grösse des Arbeitsspeichers in Megabyte (entspricht 8 GB).
-**Network** | Alles belassen (Standard) | Standard-Netzwerkverbindung.
-**Confirm** | **Start after created:** Ankreuzen | Die VM soll nach der Erstellung sofort starten.
+| Bereich | Einstellung | Erklärung |
+| --- | --- | --- |
+| **General** | **VM ID:** `100` | Eine eindeutige Nummer für die VM. |
+| | **Name:** `Docker` | Ein verständlicher Name für die VM. |
+| **OS** (Betriebssystem) | **ISO-Image:** `ubuntu-XX.XX.X-live-server-amd64.iso` | Wähle das hochgeladene Image aus. |
+| | **Type:** `Linux` | Das Betriebssystem ist Linux. |
+| **Disks** | **Disk Size (GiB):** `100` | Die Festplattengrösse der VM. |
+| **CPU** (Prozessor) | **Cores:** `8` | Die Anzahl der virtuellen Prozessorkerne, die der VM zur Verfügung stehen. |
+| **Memory** (Arbeitsspeicher) | **Memory (MiB):** `8192` | Die Grösse des Arbeitsspeichers in Megabyte (entspricht 8 GB). |
+| **Network** | Alles belassen (Standard) | Standard-Netzwerkverbindung. |
+| **Confirm** | **Start after created:** Ankreuzen | Die VM soll nach der Erstellung sofort starten. |
 
-2.  Klicke auf **"Finish"**. Die VM wird erstellt und gestartet, warte ein paar Minuten.
-    
+2. Klicke auf **"Finish"**. Die VM wird erstellt und gestartet. Warte ein paar Minuten.
 
 ### Installation von Ubuntu Server auf der VM
 
 Das Betriebssystem muss nun auf der neuen VM installiert werden.
 
-1.  Klicke links in der Baumstruktur auf deine VM: **`100 (Docker)`**.
-    
-2.  Klicke auf **"Console"**. Du siehst nun den virtuellen Bildschirm deiner VM.
-    
-3.  Klicke auf **"Try or Install"**.
-
+1. Klicke links in der Baumstruktur auf deine VM: `100 (Docker)`.
+2. Klicke auf **"Console"**. Du siehst nun den virtuellen Bildschirm deiner VM.
+3. Klicke auf **"Try or Install"**.
 
 **Folge nun den Installationsschritten:**
 
-1.  **Sprache:** Wähle **"English"**.
-        
-2.  Bei den nächsten Schritten belässt du alles so, wie es ist, und klickst auf **"Done"**.
-    
-3.  Stelle sicher, dass **"Ubuntu Server"** oben angekreuzt ist, dann **"Done"**.
-    
-4.  **Netzwerkeinstellungen:** Belasse alles beim Standard.
-    
-    > Wichtig 📌
-    > 
-    > Schreibe dir die angezeigte IP-Adresse der VM (z. B. 172.18.68.x) unbedingt auf! Du wirst sie später brauchen, um auf die VM zuzugreifen.
-    
-5.  Klicke **"Done"**.
-    
-6.  **Proxy und Mirror:** Belasse alles beim Standard und klicke jeweils **"Done"** und dann **"Continue"**.
-    
-7.  **Guided storage configuration:** Navigiere mit der Pfeiltaste nach unten, bis die Option **"Done"** grün markiert ist. Drücke Enter.
-    
-8.  **Storage Configuration:** Klicke **"Done"**.
-    
-9.  Klicke **"Continue"**.
-    
-10.  **Benutzerangaben konfigurieren:**
-    
-    -   **Your name:** Gib deinen Vornamen ein.
-    -   **Server name:** docker
-    -   **Username:** sysadmin
-    -   **Passwort:** Welcome.2024
-    -   **Confirm password:** Welcome.2024
-        
-    Hinweis: Achte darauf, dass du das Tastatur-Layout richtig beachtest. Eventuell sind Y und Z vertauscht.
-    
-11.  Klicke **"Done"**.
-    
-12.  **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
-    
-13.  **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **X**). Dies erlaubt uns, später vom Laptop aus auf die VM zuzugreifen.
-    
-14.  Navigiere zu **"Done"**.
-    
-15.  **Featured Server Snaps:** Wähle keine an. Klicke **"Done"**.
-    
+1. **Sprache:** Wähle **"English"**.
+2. Bei den nächsten Schritten belässt du alles so, wie es ist, und klickst jeweils auf **"Done"**.
+3. Stelle sicher, dass **"Ubuntu Server"** oben angekreuzt ist, dann klicke auf **"Done"**.
+4. **Netzwerkeinstellungen:** Belasse alles beim Standard.
+   > 📌 **Wichtig:** Schreibe dir die angezeigte IP-Adresse der VM (z. B. `172.18.68.x`) unbedingt auf! Du wirst sie später brauchen, um auf die VM zuzugreifen.
+5. Klicke auf **"Done"**.
+6. **Proxy und Mirror:** Belasse alles beim Standard, klicke jeweils auf **"Done"** und dann auf **"Continue"**.
+7. **Guided storage configuration:** Navigiere mit der Pfeiltaste nach unten, bis die Option **"Done"** grün markiert ist. Drücke `Enter`.
+8. **Storage Configuration:** Klicke auf **"Done"**.
+9. Klicke auf **"Continue"**.
+10. **Benutzerangaben konfigurieren:**
+    * **Your name:** Gib deinen Vornamen ein.
+    * **Server name:** `docker`
+    * **Username:** `sysadmin`
+    * **Password:** `Welcome.2024`
+    * **Confirm password:** `Welcome.2024`
+    *(Hinweis: Achte auf das Tastatur-Layout. Eventuell sind Y und Z vertauscht.)*
+11. Klicke auf **"Done"**.
+12. **Upgrade:** Wähle **"Skip for now"** und dann **"Continue"**.
+13. **Install OpenSSH server:** Wähle diese Option mit der Leertaste an (es erscheint ein **[X]**). Dies erlaubt uns, später vom Laptop aus per SSH auf die VM zuzugreifen.
+14. Navigiere zu **"Done"**.
+15. **Featured Server Snaps:** Wähle keine an. Klicke auf **"Done"**.
 
-Die Installation startet. Das kann einen Moment dauern, währenddessen kannst du ruhig bereits mit dem unteren Schritt weiterfahren.
+Die Installation startet. Das kann einen Moment dauern.
 
 ### Abschluss der VM-Installation
 
-1.  Klicke im Menü links unter **"Console"** kurz auf **"Hardware"**.
-    
-2.  Dort auf **"CD/DVD Drive"**.
-    
-3.  Klicke auf **"Remove"**, um das Installations-Image auszuwerfen.
-    
-4.  Gehe zurück zu **"Console"**.
-    
-5.  Starte die VM neu mit **"Reboot Now"**.
+1. Klicke im Menü links unter **"Console"** kurz auf **"Hardware"**.
+2. Klicke dort auf **"CD/DVD Drive"**.
+3. Klicke auf **"Remove"**, um das Installations-Image auszuwerfen.
+4. Gehe zurück zu **"Console"**.
+5. Starte die VM neu mit **"Reboot Now"**.
     
 ----------
 
