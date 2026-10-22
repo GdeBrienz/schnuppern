@@ -154,15 +154,21 @@ Die Installation startet. Das kann einen Moment dauern.
 
 ## 3. Installation von Docker und Portainer
 
-Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit. Melde dich anschliessend per SSH an.
+Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit (fallst du nicht weisst wo oder die iP bereits vergessen hast kannst du einfach deinen Mitarbeiter konsultieren).
+
+### Verbinden mit SSH
+Öffne nun auf deinem Laptop die Suche (drücke dazu die Windows-Taste) und tippe "```CMD```" ein. Daraufhin öffnet sich ein schwarzes Fenster (die Eingabeaufforderung). Gib dort den Befehl von weiter unten ein, um dich von deinem Laptop aus mit der Virtuellen Maschine (VM) zu verbinden.
 
 ### So erstellst du eine SSH-Verbindung:
-`ssh sysadmin@<IP-Adresse_der_VM>` *(Beispiel: `ssh sysadmin@172.18.68.40`)*
+Melde dich nun mit SSH von deinem Laptop aus an. 
+
+💡 **Kleiner Tipp:** Wenn man in Linux ein Passwort eingibt, werden aus Sicherheitsgründen keine Zeichen oder Sternchen angezeigt. Nur keine Panik, wenn du auf dem Bildschirm nichts siehst – tippe das Passwort einfach blind ein und drücke Enter, es funktioniert trotzdem!
+```ssh sysadmin@<IP-Adresse_der_VM>``` *(Beispiel: ```ssh sysadmin@172.18.68.40```)*
 
 1. Wenn die Verbindung erfolgreich ist, wirst du nach einem Passwort gefragt. Verwende hier das Standardpasswort: `Welcome.2024`.
 2. Beim ersten Verbindungsaufbau erscheint eine Sicherheitsabfrage. Bestätige diese mit `yes` oder `y`.
 
-> Falls du Hilfe benötigst, wende dich gerne an deinen zuständigen Betreuer.
+Falls du Hilfe benötigst, wende dich gerne an deinen zuständigen Betreuer.
 
 ---
 
@@ -251,9 +257,9 @@ Mit diesen Befehlen erstellen wir einen **Container** für Portainer und starten
         > Portainer: Eine grafische Weboberfläche, um diese Container komfortabel zu verwalten.
         > - Erklärung der Befehlsparameter:
         > - docker run: Startet einen neuen Container.
-        > - `-d: Führt den Container im Hintergrund aus (detached).
-        > - `-p 9443:9443: Leitet den Container-Port 9443 auf den Server-Port 9443 um.
-        > - `--name portainer: Gibt dem Container den Namen portainer.
+        > - -d: Führt den Container im Hintergrund aus (detached).
+        > - -p 9443:9443: Leitet den Container-Port 9443 auf den Server-Port 9443 um.
+        > - -name portainer: Gibt dem Container den Namen portainer.
     
 ----------
 
@@ -302,8 +308,8 @@ Wir verwenden eine spezielle Konfigurationsdatei (genannt `docker-compose.yml`),
    `https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/docker-compose.yml`
 2. Klicke auf den Button **"Raw"**. Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
 3. 🚨 **Wichtig:** Es wird jedes Mal ein neuer Secret Key benötigt. Konsultiere deinen Betreuer für diesen Schritt, er wird dir den Secret Key einrichten.
-4. Markiere den gesamten Text (`Strg + A`) und kopiere ihn anschliessend (`Strg + C`).
-5. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (`Strg + V`).
+4. Markiere den gesamten Text (`Strg + A`) und kopiere ihn anschliessend (`Ctrl + C`).
+5. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (`Ctrl + V`).
 6. Klicke ganz unten auf **"Deploy the stack"**.
 
 Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet. Die Bereitstellung der einzelnen Container dauert einen Moment.
@@ -318,6 +324,7 @@ Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container e
 4. Gib folgenden Befehl ein:
    ```bash
    python3 manage.py createsuperuser
+   ```
 5. **Benutzer-Details:**
    * **Username:** `admin`
    * **Email address:** Drücke einfach `Enter` (keine E-Mail notwendig).
