@@ -286,98 +286,65 @@ Du bist nun auf der Oberfläche von Portainer.
 
 ### Erstellen eines "Stacks"
 
-In Docker bezeichnet ein **Stack** (Stapel) eine Gruppe von zusammengehörigen Containern, die man zusammen verwaltet.
+In Docker bezeichnet ein **Stack** (Stapel) eine Gruppe von zusammengehörigen Containern, die gemeinsam verwaltet werden.
 
-1.  Klicke in der Menüleiste links auf **"Stacks"**.
-    
-2.  Klicke oben rechts auf **"Add Stack"**.
-    
-3.  Definiere den Namen: **`paperless-stack`**.
-    
-4.  Belasse die **Build Method** auf **"Web editor"**.
-    
+1. Klicke in der Menüleiste links auf **"Stacks"**.
+2. Klicke oben rechts auf **"Add stack"**.
+3. Definiere den Namen: `paperless-stack`.
+4. Belasse die **Build Method** auf **"Web editor"**.
 
 ### Konfiguration von Paperless
-Wir verwenden eine spezielle Konfigurationsdatei (genannt docker-compose.yml), um Paperless zu starten. Diese Datei definiert alle Container und Einstellungen, die Paperless benötigt. Da die Datei im selben GitHub-Repository wie diese Anleitung liegt, führen wir die folgenden Schritte aus, um den Code zu kopieren:
 
-1. Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/docker-compose.yml.
+Wir verwenden eine spezielle Konfigurationsdatei (genannt `docker-compose.yml`), um Paperless zu starten. Diese Datei definiert alle Container und Einstellungen, die Paperless benötigt.
 
-2. Klicke auf den Button "Raw". Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
+1. Öffne in einem neuen Browser-Tab die Adresse:  
+   `https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/docker-compose.yml`
+2. Klicke auf den Button **"Raw"**. Dadurch wird der reine Text-Code der Konfigurationsdatei angezeigt.
+3. 🚨 **Wichtig:** Es wird jedes Mal ein neuer Secret Key benötigt. Konsultiere deinen Betreuer für diesen Schritt, er wird dir den Secret Key einrichten.
+4. Markiere den gesamten Text (`Strg + A`) und kopiere ihn anschliessend (`Strg + C`).
+5. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (`Strg + V`).
+6. Klicke ganz unten auf **"Deploy the stack"**.
 
-3. Nun Wichtig! Man braucht immer einen neuen Secret Key, du musst somit einen erstellen und das JEDES MAL!!. Konsultiere deinen Mitarbeiter für diesen Schritt, er wird dir den Secret Key einrichten.
-
-4. Markiere den gesamten Text (<kbd>Strg + A</kbd>) und kopiere ihn anschliessend (<kbd>Strg + C</kbd>).
-
-5. Gehe zurück zu Portainer und füge den kopierten Code in das grosse Textfeld des Web-Editors ein (<kbd>Strg + V</kbd>).
-
-6. Klicke ganz unten auf "Deploy the Stack".
-
-Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet. Die Bereitstellung (Deployment) der einzelnen Container dauert einen Moment.
+Der Stack (und damit der Paperless-Dienst) wird nun im Hintergrund gestartet. Die Bereitstellung der einzelnen Container dauert einen Moment.
 
 ### Erstellen eines Paperless-Benutzers
 
 Bevor du Paperless nutzen kannst, muss ein Administrator-Benutzer im Container erstellt werden.
 
-1.  Klicke in Portainer auf **"Containers"**.
+1. Klicke in Portainer auf **"Containers"**.
+2. Klicke auf den Namen des Paperless-Webservers (er beginnt mit `paperless-stack-webserver...`).
+3. Klicke auf das Konsolen-Symbol oder den Tab **"Console"** und dann auf **"Connect"**.
+4. Gib folgenden Befehl ein:
+   ```bash
+   python3 manage.py createsuperuser
     
-2.  Klicke auf den Namen des Paperless-Webservers (er beginnt mit **`paperless-stack-webserver...`**).
-    
-3.  Klicke auf den Tab **"Console"** und dann auf **"Connect"**.
-    
-4.  Gib den folgenden Befehl ein:
-    
-    Bash
-    
-    ```
-    python3 manage.py createsuperuser
-    
-    ```
-    
-5.  **Benutzer-Details:**
-    
-    -   **Username:** `admin`
-        
-    -   **Email address:** Drücke einfach <kbd>Enter</kbd> (du brauchst keine E-Mail).
-        
-    -   **Password:** `Welcome.2024`
-        
-    -   **Password (again):** `Welcome.2024`
-        
+5. **Benutzer-Details:**
+   * **Username:** `admin`
+   * **Email address:** Drücke einfach `Enter` (keine E-Mail notwendig).
+   * **Password:** `Welcome.2024`
+   * **Password (again):** `Welcome.2024`
 
 ### Zugriff auf Paperless
 
 Paperless läuft nun auf dem Port **8000** deiner VM.
 
-1.  Öffne einen **neuen Tab** im Browser.
-    
-2.  Gib die IP-Adresse deiner VM mit dem Port **8000** ein:
-    
-    -   Beispiel: `http://172.18.68.x:8000`
-        
-3.  Melde dich mit dem soeben erstellten Benutzer an:
-    
-    -   Username: `admin`
-        
-    -   Passwort: `Welcome.2024`
-        
+1. Öffne einen **neuen Tab** im Browser.
+2. Gib die IP-Adresse deiner VM mit dem Port **8000** ein:
+   * Beispiel: `http://172.18.68.x:8000`
+3. Melde dich mit dem soeben erstellten Benutzer an:
+   * **Username:** `admin`
+   * **Passwort:** `Welcome.2024`
 
 Du siehst nun die Oberfläche von Paperless.
 
 ### Hochladen des ersten Dokuments
 
-1.  Öffne in einem neuen Browser-Tab die Adresse https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/Dokument.pdf.
+1. Öffne in einem neuen Browser-Tab die Adresse:  
+   `https://github.com/GdeBrienz/schnuppern/blob/main/Auftr%C3%A4ge/Proxmox%20Auftrag/Dokument.pdf`
+2. Suche den Download-Button und lade das Dokument herunter. Es landet in deinem Download-Ordner auf dem Computer.
+3. Klicke in Paperless bei **"Upload new documents"** auf **"Browse files"**.
+4. Navigiere zum Ordner **Downloads**.
+5. Wähle die Datei `Dokument.pdf` aus.
+6. Klicke auf **"Öffnen"** und dann auf **"Upload"**.
 
-2.  Suche den Download-Button und lade das Dokument herunter. Es landet in deinem Download-Ordner auf dem Computer. 
-
-3.  Klicke bei **"Upload new documents"** auf **"Browse files"**.
-    
-4.  Navigiere zu **Downloads**.
-    
-5.  Wähle die Datei **`Dokument.pdf`** an.
-    
-6.  Klicke auf **"öffnen"** und dann auf **"Upload"**.
-    
-
-Unter **"Documents"** in Paperless siehst du nun dein erstes hochgeladenes Dokument. **Herzlichen Glückwunsch!** Du hast erfolgreich eine VM erstellt und darauf einen Dienst in einem Docker-Container bereitgestellt.
-
-Du bist nun fertig, du hast diesen Auftrag erfolgreich abgeschlossen. Konsultiere nun deinen Mitarbeiter und zeig ihm, wie gut du deine Aufgabe gemeistert hast.
+Unter **"Documents"** in Paperless siehst du nun dein erstes hochgeladenes Dokument.
