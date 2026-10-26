@@ -35,7 +35,7 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
    * Wähle beim **Tastatur-Layout** **"Swiss-German"** aus.
    * Klicke dann auf **"Next"**.
 5. **Passwort/Benutzername und E-Mail:**
-   * Setze als Passwort **"Welcome.2024"**.
+   * Setze als Passwort **"Welcome.2024"**. (Wundere dich nicht, wenn du bei der Eingabe nichts siehst – keine Panik! Das ist bei Linux ganz normal. Gib dein Passwort einfach wie gewohnt ein und drücke Enter. Es wird im Hintergrund trotzdem erfasst)
    * Der Benutzername, den du bei Proxmox später eingeben musst, ist **"root"**.
    * Wiederhole das Passwort bei **"Confirm Password"**.
    * Gib bei der E-Mail-Adresse **"schnuppernbrienz@gmail.com"** ein.
