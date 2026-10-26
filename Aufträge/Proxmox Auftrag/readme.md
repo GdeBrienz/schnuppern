@@ -279,10 +279,9 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker-Server zug
      ```bash
          sudo docker logs portainer
      ```
-     
+   
    * Suche in der Ausgabe nach dem Eintrag `setup_token=` (z. B. `setup_token=8de5820c02705fa05e6ce7a0dfaba160a54a772a9d2652abcba4b211468e7bc5`).
-   * Kopiere diesen Token in das entsprechende Feld in Portainer.
-   * Klicke auf **"Create user"**.
+   * Kopiere diesen Token in das entsprechende Feld in Portainer. (Wichtig: Bitte kopiere nicht setup_token= mit, du brauchst nur den Wert, der nach dem Gleichheitszeichen kommt.
 5. Klicke auf **"Get Started"** und wähle die Umgebung `local` aus.
 
 Du bist nun auf der Oberfläche von Portainer.
