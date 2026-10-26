@@ -36,6 +36,7 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
    * Klicke dann auf **"Next"**.
 5. **Passwort/Benutzername und E-Mail:**
    * Setze als Passwort **"Welcome.2024"**.
+
    
    > 💡 **Wichtig:** Wundere dich nicht, wenn du bei der Eingabe nichts siehst – keine Panik! Das ist bei Linux ganz normal. Gib dein Passwort einfach wie gewohnt ein und drücke Enter. Es wird im Hintergrund trotzdem erfasst kennst.
 
