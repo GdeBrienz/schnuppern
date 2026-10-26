@@ -42,7 +42,6 @@ Ziel dieses Auftrags ist es, eine grundlegende **virtuelle Umgebung** einzuricht
    * Wiederhole das Passwort bei **"Confirm Password"**.
    * Gib bei der E-Mail-Adresse **"schnuppernbrienz@gmail.com"** ein.
    * Klicke auf **"Next"**.
-
 > 🚨 **Wichtig:** Im Rahmen dieser Übung verwenden wir aus Einfachheitsgründen überall das gleiche, relativ einfache Passwort. In einem produktiven (echt genutzten) System musst du aber immer sichere und unterschiedliche Passwörter verwenden!
 
 6. **Netzwerkkonfiguration:**
