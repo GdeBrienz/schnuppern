@@ -82,8 +82,8 @@ Du bist nun auf der Weboberfläche (WebGUI) von Proxmox. Schau dich gerne ein we
 
 Um eine VM zu erstellen, benötigen wir ein **ISO-Image** (die Installationsdatei) für das Betriebssystem der VM. Wir verwenden **Ubuntu Server** (ein Linux-Betriebssystem).
 
-1. Klicke dich links durch die Baumstruktur: **Datacenter > Proxmox >** den Namen deines Nodes (z. B. **pve**).
-2. Klicke auf `local (pve)`.
+1. Klicke dich links durch die Baumstruktur: **Datacenter > Proxmox >** den Namen deines Servers (z. B. **Proxmox**).
+2. Klicke auf `local`.
 3. Klicke auf den Tab **"ISO Images"**.
 4. Klicke auf **"Upload"** > **"Select File"**.
 5. Navigiere zum Speicherort der Datei (auf dem USB-Stick) und wähle `ubuntu-XX.XX.X-live-server-amd64.iso` aus.
@@ -155,7 +155,7 @@ Die Installation startet. Das kann einen Moment dauern, währenddessen kannst du
 ## 3. Installation von Docker und Portainer
 
 Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit (fallst du nicht weisst wo oder die iP bereits vergessen hast kannst du einfach deinen Mitarbeiter konsultieren).
-
+Du meldest dich mit den Login-Daten an, die du bereits zuvor genutzt hast. Sobald du eingeloggt bist, siehst du einen Bereich, der etwa so aussieht: https://172.18.68.x. Dort findest du die IP-Adresse deiner VM.
 ### Verbinden mit SSH
 Öffne nun auf deinem Laptop die Suche (drücke dazu die Windows-Taste) und tippe "```CMD```" ein. Daraufhin öffnet sich ein schwarzes Fenster (die Eingabeaufforderung). Gib dort den Befehl von weiter unten ein, um dich von deinem Laptop aus mit der Virtuellen Maschine (VM) zu verbinden.
 
