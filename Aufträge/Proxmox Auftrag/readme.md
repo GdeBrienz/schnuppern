@@ -276,7 +276,7 @@ Nun kannst du über das Web-Interface von Portainer auf deinen Docker-Server zug
 4. **Anmeldung bei Portainer:**
    * Erstelle einen neuen Benutzer mit dem Benutzernamen `admin`.
    * Wähle das Passwort `Welcome.2024`.
-   * Wenn die Sitzung abgelaufen ist oder ein Setup-Token gefordert wird, gib in deiner SSH-Konsole die du beim vorherigen Schritt erstellt hast folgenden Befehl ein:
+   * Wenn die Sitzung abgelaufen ist oder du ein Setup-Token eingeben musst, gib in deiner SSH-Konsole die du beim vorherigen Schritt erstellt hast folgenden Befehl ein:
      ```bash
          sudo docker logs portainer
      ```
