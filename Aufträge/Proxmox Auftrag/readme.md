@@ -155,7 +155,8 @@ Die Installation startet. Das kann einen Moment dauern, währenddessen kannst du
 ## 3. Installation von Docker und Portainer
 
 Gehe nun in die Konsole deiner virtuellen Maschine (VM), suche die IP-Adresse heraus und halte sie bereit (fallst du nicht weisst wo oder die iP bereits vergessen hast kannst du einfach deinen Mitarbeiter konsultieren).
-Du meldest dich mit den Login-Daten an, die du bereits zuvor genutzt hast. Sobald du eingeloggt bist, siehst du einen Bereich, der etwa so aussieht: https://172.18.68.x. Dort findest du die IP-Adresse deiner VM.
+Du meldest dich mit den Login-Daten an, die du bereits zuvor genutzt hast. Sobald du eingeloggt bist, siehst du einen Bereich, der etwa so aussieht: (```https://172.18.68.x```) Dort findest du die IP-Adresse deiner VM.
+
 ### Verbinden mit SSH
 Öffne nun auf deinem Laptop die Suche (drücke dazu die Windows-Taste) und tippe "```CMD```" ein. Daraufhin öffnet sich ein schwarzes Fenster (die Eingabeaufforderung). Gib dort den Befehl von weiter unten ein, um dich von deinem Laptop aus mit der Virtuellen Maschine (VM) zu verbinden.
 
